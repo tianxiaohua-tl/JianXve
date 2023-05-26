@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.uzz.springboot.mapper.admin.OrderListMapper">
+
+    <select id="selectAll" resultType="order">
+        SELECT orderlist.* , username,CourseName ,userdetail.img  FROM orderlist,userdetail,course where
+        orderlist.UserISBN=userdetail.id  and orderlist.CourseISBN=course.ISBN
+    </select>
+    <delete id="deleteByid">
+        DELETE from orderlist where orderid=#{orderid}
+    </delete>
+    <select id="selectByUserId" resultType="order">
+<!--        SELECT * FROM orderlist where orderid=#{orderid}-->
+
+
+
+        SELECT orderlist.* , username,CourseName ,userdetail.img  FROM orderlist,userdetail,course where
+        orderlist.UserISBN=userdetail.id  and orderlist.CourseISBN=course.ISBN
+        and orderid=#{orderid}
+    </select>
+
+    <select id="selectAll1" resultType="order">
+        SELECT orderlist.* , username,CourseName ,userdetail.img  FROM orderlist,userdetail,course where
+        orderlist.UserISBN=userdetail.id  and orderlist.CourseISBN=course.ISBN
+       and username like '%${username}%'
+    </select>
+
+    <select id="selectAll2" resultType="order">
+        SELECT orderlist.* , username,CourseName ,userdetail.img  FROM orderlist,userdetail,course where
+        orderlist.UserISBN=userdetail.id  and orderlist.CourseISBN=course.ISBN
+       and CourseName like '%${CourseName}%'
+    </select>
+
+    <select id="selectAll3" resultType="order">
+        SELECT orderlist.* , username,CourseName ,userdetail.img  FROM orderlist,userdetail,course where
+        orderlist.UserISBN=userdetail.id  and orderlist.CourseISBN=course.ISBN
+       and orderid like '%${orderid}%'
+    </select>
+
+    <select id="selectAll4" resultType="order">
+        SELECT orderlist.* , username,CourseName ,userdetail.img  FROM orderlist,userdetail,course where
+        orderlist.UserISBN=userdetail.id  and orderlist.CourseISBN=course.ISBN
+       and username like '%${username}%' and CourseName like '%${CourseName}%'
+
+    </select>
+
+
+
+
+
+</mapper>

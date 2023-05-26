@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="index/header :: css"></head>
+
+<body class="c-layout-header-fixed c-layout-header-mobile-fixed c-layout-header-topbar c-layout-header-topbar-collapse">
+    <header th:replace="index/header :: header"></header>
+    <div th:replace="index/header :: forget"></div>
+    <div th:replace="index/header :: register"></div>
+    <div th:replace="index/header :: login"></div>
+    <nav th:replace="index/header :: style"></nav>
+    <div class="c-layout-page">
+        <div class="c-layout-breadcrumbs-1 c-subtitle c-fonts-uppercase c-fonts-bold c-bordered c-bordered-both">
+            <div class="container">
+                <div class="c-page-title c-pull-left">
+                    <a href="/AllCourse">
+                        <h3 class="c-font-uppercase c-font-sbold">全部课程</h3>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="c-layout-sidebar-menu c-theme ">
+                <ul class="c-sidebar-menu collapse " id="sidebar-menu-1">
+                    <li class="c-dropdown c-active c-open">
+                        <a href="javascript:;" class="c-toggler">课程分类
+                            <span class="c-arrow"></span>
+                        </a>
+                        <ul class="c-dropdown-menu" th:each="list : ${categoryList}">
+                            <li>
+                                <a th:href="@{'/AllCourse?fenlei='+${list.CategoryId}}" th:text="${list.CategoryName}">计算机</a>
+                            </li>
+<!--                            <li>-->
+<!--                                <a href="/AllCourse?fenlei=2">文学</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="/AllCourse?fenlei=3">人工智能</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="/AllCourse?fenlei=4">外国语</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="/AllCourse?fenlei=4">外国语</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="/AllCourse?fenlei=4">外国语</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="/AllCourse?fenlei=4">外国语</a>-->
+<!--                            </li>-->
+                        </ul>
+                    </li>
+                    <li class="c-dropdown">
+                        <a href="javascript:;" class="c-toggler">我的菜单
+                            <span class="c-arrow"></span>
+                        </a>
+                        <ul class="c-dropdown-menu">
+                            <li>
+                                <a th:href="@{/wish}">愿望清单</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/studyspace}">学习空间</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/cart}">购物车</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/orderhistory}">订单历史</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/comment}">我的评论</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="c-dropdown">
+                        <a href="javascript:;" class="c-toggler">课程价格选择
+                            <span class="c-arrow"></span>
+                        </a>
+                        <ul class="c-dropdown-menu">
+                            <li>
+                                <a th:href="@{'/AllCourse?fenlei=0&Price=1'}">免费</a>
+                            </li>
+                            <li>
+                                <a th:href="@{'/AllCourse?fenlei=0&Price=2'}">特价</a>
+                            </li>
+                            <li>
+                                <a th:href="@{'/AllCourse?fenlei=0&Price=3'}">上新</a>
+                            </li>
+                            <li>
+                                <a th:href="@{'/AllCourse?fenlei=0&Price=4'}">价格<100</a>
+                            </li>
+                            <li>
+                                <a th:href="@{'/AllCourse?fenlei=0&Price=5'}">价格100-300</a>
+                            </li>
+                            <li>
+                                <a th:href="@{'/AllCourse?fenlei=0&Price=6'}">价格>300</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="c-padding-20 c-margin-t-40 c-bg-grey-1 c-bg-img-bottom-right">
+                    <div class="c-content-title-1 c-margin-t-20">
+                        <h3 class="c-font-uppercase c-font-bold">需要帮助吗？</h3>
+                        <div class="c-line-left"></div>
+                        <form action="#">
+                            <div class="input-group input-group-lg c-square">
+                                <input type="text" class="form-control c-square" placeholder="请写下问题" />
+                                <span class="input-group-btn">
+                                    <button class="btn c-theme-btn c-btn-square c-btn-uppercase c-font-bold"
+                                            type="button"><a th:href="@{/problem}" style="color:white">搜索</a></button>
+                                </span>
+                            </div>
+                        </form>
+                        <p class="c-font-thin">你的问题，让我们专注的客户服务，帮助您查看我们的常见问题，以使您的问题得到回答！</p>
+                    </div>
+                </div>
+            </div>
+            <div class="c-layout-sidebar-content ">
+                <div class="c-shop-result-filter-1 clearfix form-inline" th:if="${search==1}">
+                    <div class="">
+                        <label class="control-label c-font-16">查找结果为:</label>
+                    </div>
+                </div>
+                <div class="c-shop-result-filter-1 clearfix form-inline" th:if="${search==0}">
+                    <form action="/AllCourse" method="get">
+                        <div class="c-filter">
+                            <button type="submit" class="btn btn-default">确定</button>
+                            <input type="hidden" name="fenlei" th:value="${fenlei1}">
+                            <input type="hidden" name="Price" th:value="${Price}">
+                        </div>
+                        <div class="c-filter">
+                            <label class="control-label c-font-16">展示:</label>
+                            <select class="form-control c-square c-theme c-input" name="num">
+                                <option value="4">4</option>
+                                <option value="8" selected>8</option>
+                                <option value="12">12</option>
+                                <option value="16">16</option>
+                            </select>
+                            <label class="control-label c-font-16">条</label>
+                        </div>
+                        <div class="c-filter" th:if="${ss==1}">
+                            <label class="control-label c-font-16">排列方式:</label>
+                            <select class="form-control c-square c-theme c-input" name="pattern">
+                                <option value="0" selected="selected">默认</option>
+                                <option value="1">名称(A - Z)</option>
+                                <option value="2">名称(Z - A)</option>
+                                <option value="3">价格 (低 &gt; 高)</option>
+                                <option value="4">价格 (高 &gt; 低)</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="c-margin-t-20"></div>
+                <div class="c-bs-grid-small-space">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6 c-margin-b-20" th:each="list : ${list}">
+                            <div class="c-content-product-2 c-bg-white c-border">
+                                <div class="c-content-overlay">
+                                    <div class="c-label c-bg-red c-font-uppercase c-font-white c-font-13 c-font-bold"
+                                        th:if="${list.SpecialCourse==1||list.SpecialCourse==3}">特价</div>
+                                    <div class="c-label c-label-right c-theme-bg c-font-uppercase c-font-white c-font-13 c-font-bold"
+                                        th:if="${list.SpecialCourse==2||list.SpecialCourse==3}">新</div>
+                                    <div class="c-overlay-wrapper">
+                                        <div class="c-overlay-content">
+                                            <a th:href="@{'/detail?ISBN='+${list.ISBN}}"
+                                                class="btn btn-md c-btn-grey-1 c-btn-uppercase c-btn-bold c-btn-border-1x c-btn-square">查看详情</a>
+                                        </div>
+                                    </div>
+                                    <div class="c-bg-img-center c-overlay-object" data-height="height"
+                                        th:style="@{'height: 230px; background-image: url('+${list.Img}+');'}"></div>
+                                </div>
+                                <div class="c-info">
+                                    <p class="c-title c-font-16 c-font-slim" th:text="${list.CourseName}"></p>
+                                    <p class="c-price c-font-14 c-font-slim">
+                                        <h th:text="@{'$'+${list.Price}}">111</h> &nbsp;
+<!--                                        <span class="c-font-14 c-font-line-through c-font-red"-->
+<!--                                            th:text="${list.Price}">$600</span>-->
+                                    </p>
+                                </div>
+                                <div class="btn-group btn-group-justified" role="group">
+                                    <div class="btn-group c-border-top" role="group">
+                                        <a th:href="@{'/dowish?ISBN='+${list.ISBN}}"
+                                            class="btn btn-sm c-btn-white c-btn-uppercase c-btn-square c-font-grey-3 c-font-white-hover c-bg-red-2-hover c-btn-product">添加愿望清单</a>
+                                    </div>
+                                    <div class="btn-group c-border-left c-border-top" role="group">
+                                        <a th:href="@{'/docart?ISBN='+${list.ISBN}}"
+                                            class="btn btn-sm c-btn-white c-btn-uppercase c-btn-square c-font-grey-3 c-font-white-hover c-bg-red-2-hover c-btn-product">加入购物车</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="c-margin-t-20"></div>
+                <ul class="c-content-pagination c-square c-theme pull-right" th:if="${search!=1}">
+                    <li class="c-prev">
+                        <a
+                            th:href="@{'/AllCourse?pageNum='+${pageNum-1}+'&num='+${pagesize}+'&pattern='+${pattern}+'&fenlei='+${fenlei1}+'&Price='+${Price}}">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            th:href="@{'/AllCourse?pageNum=1&num='+${pagesize}+'&pattern='+${pattern}+'&fenlei='+${fenlei1}+'&Price='+${Price}}">1</a>
+                    </li>
+                    <li>
+                        <a
+                            th:href="@{'/AllCourse?pageNum=2&num='+${pagesize}+'&pattern='+${pattern}+'&fenlei='+${fenlei1}+'&Price='+${Price}}">2</a>
+                    </li>
+                    <li>
+                        <a
+                            th:href="@{'/AllCourse?pageNum=3&num='+${pagesize}+'&pattern='+${pattern}+'&fenlei='+${fenlei1}+'&Price='+${Price}}">3</a>
+                    </li>
+                    <li>
+                        <a
+                            th:href="@{'/AllCourse?pageNum=4&num='+${pagesize}+'&pattern='+${pattern}+'&fenlei='+${fenlei1}+'&Price='+${Price}}">4</a>
+                    </li>
+                    <li class="c-next">
+                        <a
+                            th:href="@{'/AllCourse?pageNum='+${pageNum+1}+'&num='+${pagesize}+'&pattern='+${pattern}+'&fenlei='+${fenlei1}+'&Price='+${Price}}">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="c-content-pagination c-square c-theme pull-right" th:if="${search==1}">
+                    <li>
+                        显示全部
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <a name="footer"></a>
+    <footer th:replace="index/header :: footer"></footer>
+    <div class="c-layout-go2top">
+        <i class="icon-arrow-up"></i>
+    </div>
+<!--    <script src="../assets/plugins/jquery.min.js" type="text/javascript"></script>-->
+<!--    <script src="../assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>-->
+<!--    <script src="../assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>-->
+<!--    <script src="../assets/plugins/jquery.easing.min.js" type="text/javascript"></script>-->
+<!--    <script src="../assets/plugins/reveal-animate/wow.js" type="text/javascript"></script>-->
+<!--    <script src="../assets/base/js/scripts/reveal-animate/reveal-animate.js" type="text/javascript"></script>-->
+<!--    <script src="../assets/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js" type="text/javascript"></script>-->
+<!--    <script src="../assets/plugins/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>-->
+<!--    <script src="../assets/plugins/counterup/jquery.counterup.min.js" type="text/javascript"></script>-->
+<!--    <script src="../assets/plugins/counterup/jquery.waypoints.min.js" type="text/javascript"></script>-->
+<!--    <script src="../assets/plugins/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>-->
+<!--    <script src="../assets/plugins/slider-for-bootstrap/js/bootstrap-slider.js" type="text/javascript"></script>-->
+<!--    <script src="../assets/base/js/components.js" type="text/javascript"></script>-->
+<!--    <script src="../assets/base/js/components-shop.js" type="text/javascript"></script>-->
+<!--    <script src="../assets/base/js/app.js" type="text/javascript"></script>-->
+<!--    <script>-->
+<!--        $(document).ready(function () {-->
+<!--            App.init();-->
+<!--        });-->
+<!--    </script>-->
+    <script th:src="@{/assets/plugins/jquery.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/jquery-migrate.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/bootstrap/js/bootstrap.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/jquery.easing.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/reveal-animate/wow.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/scripts/reveal-animate/reveal-animate.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/jquery.themepunch.tools.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/jquery.themepunch.revolution.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/extensions/revolution.extension.slideanims.min.js}"
+            type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/extensions/revolution.extension.layeranimation.min.js}"
+            type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/extensions/revolution.extension.navigation.min.js}"
+            type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/extensions/revolution.extension.video.min.js}"
+            type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/owl-carousel/owl.carousel.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/counterup/jquery.waypoints.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/counterup/jquery.counterup.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/fancybox/jquery.fancybox.pack.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/slider-for-bootstrap/js/bootstrap-slider.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/components.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/components-shop.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/app.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/scripts/revo-slider/slider-11.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/isotope/isotope.pkgd.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/isotope/imagesloaded.pkgd.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/isotope/packery-mode.pkgd.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/ilightbox/js/jquery.requestAnimationFrame.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/ilightbox/js/jquery.mousewheel.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/ilightbox/js/ilightbox.packed.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/scripts/pages/isotope-gallery.js}" type="text/javascript"></script>
+    <script th:inline="javascript">
+        var aa = [[${ ms }]];
+        if (aa != null) {
+            alert(aa);
+        }
+    </script>
+    <script type="text/javascript">
+        function sendMessage() {
+            var emailAd = document.getElementById("emailAd");
+            if (emailAd.value == "") {
+                alert("邮箱不能为空");
+                return;
+            }
+            var email_reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+            if (!email_reg.test(emailAd.value)) {
+                alert("请输入正确的邮箱地址");
+                return;
+            }
+            $.get("/getCode", { "email": emailAd.value }, function (data) {
+                if (data.success) {
+                    var wait = 60;
+                    var button = document.getElementById("sendCode");
+                    (function time(o) {
+                        if (wait == 0) {
+                            o.disabled = false;
+                            o.innerHTML = "免费获取验证码";
+                            wait = 60;
+                        } else {
+                            o.disabled = true;
+                            o.innerHTML = wait + "秒后可以重新发送";
+                            wait--;
+                            setTimeout(function () {
+                                time(o)
+                            }, 1000)
+                        }
+                    })(button);
+                }
+            });
+        }
+
+        function tologin() {
+            var email = document.getElementById("email");
+            var code = document.getElementById("code");
+            if (code.value == "") {
+                alert("验证码不能为空");
+                return;
+            }
+            $.get("/tologin", { "email": email.value, "code": code.value }, function (data) {
+                if (data) {
+                    window.location.href = "/admin";
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

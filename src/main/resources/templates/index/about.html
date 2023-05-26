@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<!--    <head>-->
+<!--        <meta charset="utf-8" />-->
+<!--        <title>简学教育</title>-->
+<!--        <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--        <meta content="width=device-width, initial-scale=1.0" name="viewport" />-->
+<!--        <meta http-equiv="Content-type" content="text/html; charset=utf-8">-->
+<!--        <meta content="" name="description" />-->
+<!--        <meta content="" name="author" />-->
+<!--        &lt;!&ndash; BEGIN GLOBAL MANDATORY STYLES &ndash;&gt;-->
+<!--        <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700&amp;subset=all' rel='stylesheet' type='text/css'>-->
+<!--        <link href="assets/plugins/socicon/socicon.css" rel="stylesheet" type="text/css" />-->
+<!--        <link href="assets/plugins/bootstrap-social/bootstrap-social.css" rel="stylesheet" type="text/css" />-->
+<!--        <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />-->
+<!--        <link href="assets/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />-->
+<!--        <link href="assets/plugins/animate/animate.min.css" rel="stylesheet" type="text/css" />-->
+<!--        <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />-->
+<!--        &lt;!&ndash; END GLOBAL MANDATORY STYLES &ndash;&gt;-->
+<!--        &lt;!&ndash; BEGIN: BASE PLUGINS  &ndash;&gt;-->
+<!--        <link href="assets/plugins/cubeportfolio/css/cubeportfolio.min.css" rel="stylesheet" type="text/css" />-->
+<!--        <link href="assets/plugins/owl-carousel/owl.carousel.css" rel="stylesheet" type="text/css" />-->
+<!--        <link href="assets/plugins/owl-carousel/owl.theme.css" rel="stylesheet" type="text/css" />-->
+<!--        <link href="assets/plugins/owl-carousel/owl.transitions.css" rel="stylesheet" type="text/css" />-->
+<!--        <link href="assets/plugins/fancybox/jquery.fancybox.css" rel="stylesheet" type="text/css" />-->
+<!--        <link href="assets/plugins/slider-for-bootstrap/css/slider.css" rel="stylesheet" type="text/css" />-->
+<!--        &lt;!&ndash; END: BASE PLUGINS &ndash;&gt;-->
+<!--        &lt;!&ndash; BEGIN THEME STYLES &ndash;&gt;-->
+<!--        <link href="assets/base/css/plugins.css" rel="stylesheet" type="text/css" />-->
+<!--        <link href="assets/base/css/components.css" id="style_components" rel="stylesheet" type="text/css" />-->
+<!--        <link href="assets/base/css/themes/default.css" rel="stylesheet" id="style_theme" type="text/css" />-->
+<!--        <link href="assets/base/css/custom.css" rel="stylesheet" type="text/css" />-->
+<!--        &lt;!&ndash; END THEME STYLES &ndash;&gt;-->
+<!--        <link rel="shortcut icon" href="favicon.ico" /> </head>-->
+
+<head th:replace="index/header :: css"></head>
+
+    <body class="header-fixed c-layout-header-mobile-fixed c-layout-header-topbar c-layout-header-topbar-collapse">
+    <header th:replace="index/header :: header"></header>
+    <div th:replace="index/header :: forget"></div>
+    <div th:replace="index/header :: register"></div>
+    <div th:replace="index/header :: login"></div>
+    <nav th:replace="index/header :: style"></nav>
+        <div class="c-layout-page">
+            <!-- BEGIN: LAYOUT/BREADCRUMBS/BREADCRUMBS-3 -->
+            <div class="c-layout-breadcrumbs-1 c-subtitle c-fonts-uppercase c-fonts-bold c-bordered c-bordered-both">
+                <div class="container">
+                    <div class="c-page-title c-pull-left">
+                        <h3 class="c-font-uppercase c-font-sbold">关于我们</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="c-content-box c-size-md c-bg-white">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 wow animate fadeInUp">
+                            <p>&emsp;&emsp;学习是每个一个学生的职责，而学习的动力是靠自己的梦想，也可以这样说没有自己的梦想就是对自己的一种不责任的表现，
+                                也就和人失走肉没啥两样，只是改变命运，同时知识也不是也不是随意的摘取。要通过自己的努力，要把我自己生命的钥匙。 </p>
+                            <p>&emsp;&emsp;有智慧的人未必先天就很聪明，反而更多的是通过后天毕生的努力。现在，我们这些正在求学的学生，
+                                当中，有很多人是认为自己先天不足，没办法学好，因此悲观泄气，无心向学。其实，这是大可不必的，只要勤奋努力，希望就在面前。 </p>
+                            <p>&emsp;一个好的习惯伴人一生，会给人带来一笔财富，引你走向成功；一个坏习惯，他会给你以后的生活带来许多不便。所以养成一个好习惯是对明天负责。</p>
+                        </div>
+                    </div>
+                    <div class="c-content-title-1 c-center c-margin-t-80">
+                        <h3 class="c-font-uppercase c-font-bold">我们提供的服务</h3>
+                        <div class="c-line-center"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 wow animate fadeInUp">
+                            <ul class="c-content-list-1 c-theme c-separator-dot c-font-uppercase">
+                                <li>课程选购</li>
+
+                                <li>资源分享</li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-4 wow animate fadeInUp" data-wow-delay="0.2s">
+                            <ul class="c-content-list-1 c-theme c-separator-dot c-font-uppercase">
+                                <li>课程测试</li>
+
+                                <li>交流论坛</li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-4 wow animate fadeInUp" data-wow-delay="0.4s">
+                            <ul class="c-content-list-1 c-theme c-separator-dot c-font-uppercase">
+                                <li>学习空间</li>
+
+                                <li>成绩记录</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END: CONTENT/MISC/ABOUT-2 -->
+            <!-- BEGIN: CONTENT/MISC/LATEST-ITEMS-4 -->
+            <div class="c-content-box c-size-md c-bg-grey-1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="c-content-media-2-slider" data-slider="owl" data-single-item="true" data-auto-play="4000">
+                                <div class="c-content-label c-font-uppercase c-font-bold">简学</div>
+                                <div class="owl-carousel owl-theme c-theme owl-single">
+                                    <div class="item">
+                                        <div class="c-content-media-2 c-bg-img-center" th:style="@{background-image: url(assets/base/img/content/stock3/9.jpg); min-height: 380px;}">
+                                            <div class="c-panel">
+                                                <div class="c-fav">
+<!--                                                    <i class="icon-heart c-font-thin"></i>-->
+<!--                                                    <p class="c-font-thin">16</p>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="c-content-media-2 c-bg-img-center" th:style="@{background-image: url(assets/base/img/content/stock3/8.jpg); min-height: 380px;}">
+                                            <div class="c-panel">
+                                                <div class="c-fav">
+<!--                                                    <i class="icon-heart c-font-thin"></i>-->
+<!--                                                    <p class="c-font-thin">24</p>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="c-content-media-2 c-bg-img-center" th:style="@{background-image: url(assets/base/img/content/stock3/35.jpg); min-height: 380px;}">
+                                            <div class="c-panel">
+                                                <div class="c-fav">
+<!--                                                    <i class="icon-heart c-font-thin"></i>-->
+<!--                                                    <p class="c-font-thin">19</p>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="c-content-media-1" style="height: 380px;">
+                                <div class="c-content-label c-font-uppercase c-font-bold c-theme-bg">我们的使命</div>
+                                <a href="#" class="c-title c-font-uppercase  c-font-bold c-theme-on-hover">简学分享</a>
+                                <p>学习也是快乐的，因为你学习了许多知识，当你学到了他人不知道的知识，当你考试取得了优异成绩的时候……你会感到无比的快乐，因为这些都是通过你的努力所取得的。</p>
+                                <div class="c-author">
+<!--                                    <div class="c-portrait" th:style="background-image: url(assets/base/img/content/team/team16.jpg)"></div>-->
+                                    <div class="c-name c-font-uppercase"> --简学</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END: CONTENT/MISC/LATEST-ITEMS-4 -->
+            <!-- BEGIN: CONTENT/SLIDERS/TEAM-1 -->
+            <div class="c-content-box c-size-md c-bg-white">
+                <div class="container">
+                    <!-- Begin: Testimonals 1 component -->
+                    <div class="c-content-person-1-slider" data-slider="owl" data-items="3" data-auto-play="8000">
+                        <!-- Begin: Title 1 component -->
+                        <div class="c-content-title-1">
+                            <h3 class="c-center c-font-uppercase c-font-bold">制作团队</h3>
+                            <div class="c-line-center c-theme-bg"></div>
+                        </div>
+                        <!-- End-->
+                        <!-- Begin: Owlcarousel -->
+                        <div class="owl-carousel owl-theme c-theme">
+                            <div class="item">
+                                <div class="c-content-person-1">
+                                    <div class="c-caption c-content-overlay">
+                                        <div class="c-overlay-wrapper">
+                                            <div class="c-overlay-content">
+                                                <a href="#">
+                                                    <i class="icon-link"></i>
+                                                </a>
+<!--                                                <a href="assets/base/img/content/team/person7.jpg" data-lightbox="fancybox" data-fancybox-group="gallery-1">-->
+<!--                                                    <i class="icon-magnifier"></i>-->
+<!--                                                </a>-->
+                                            </div>
+                                        </div>
+<!--                                        <img class="c-overlay-object img-responsive" src="assets/base/img/content/team/person7.jpg" alt=""> -->
+                                    </div>
+                                    <div class="c-body">
+                                        <div class="c-head">
+                                            <div class="c-name c-font-uppercase c-font-bold">团队成员1</div>
+<!--                                            <ul class="c-socials c-theme-ul">-->
+<!--                                                <li>-->
+<!--                                                    <a href="#">-->
+<!--                                                        <i class="icon-social-twitter"></i>-->
+<!--                                                    </a>-->
+<!--                                                </li>-->
+<!--                                                <li>-->
+<!--                                                    <a href="#">-->
+<!--                                                        <i class="icon-social-facebook"></i>-->
+<!--                                                    </a>-->
+<!--                                                </li>-->
+<!--                                                <li>-->
+<!--                                                    <a href="#">-->
+<!--                                                        <i class="icon-social-dribbble"></i>-->
+<!--                                                    </a>-->
+<!--                                                </li>-->
+<!--                                            </ul>-->
+                                        </div>
+<!--                                        <div class="c-position"> CEO, Mockingbird </div>-->
+                                        <p> 联系方式为：1234567890 </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="c-content-person-1">
+                                    <div class="c-caption c-content-overlay">
+                                        <div class="c-overlay-wrapper">
+                                            <div class="c-overlay-content">
+                                                <a href="#">
+                                                    <i class="icon-link"></i>
+                                                </a>
+<!--                                                <a href="assets/base/img/content/team/person6.jpg" data-lightbox="fancybox" data-fancybox-group="gallery-1">-->
+<!--                                                    <i class="icon-magnifier"></i>-->
+<!--                                                </a>-->
+                                            </div>
+                                        </div>
+<!--                                        <img src="assets/base/img/content/team/person6.jpg" class="img-responsive c-overlay-object" alt="">-->
+                                    </div>
+                                    <div class="c-body">
+                                        <div class="c-head">
+                                            <div class="c-name c-font-uppercase c-font-bold">团队成员2</div>
+<!--                                            <ul class="c-socials c-theme-ul">-->
+<!--                                                <li>-->
+<!--                                                    <a href="#">-->
+<!--                                                        <i class="icon-social-twitter"></i>-->
+<!--                                                    </a>-->
+<!--                                                </li>-->
+<!--                                                <li>-->
+<!--                                                    <a href="#">-->
+<!--                                                        <i class="icon-social-facebook"></i>-->
+<!--                                                    </a>-->
+<!--                                                </li>-->
+<!--                                                <li>-->
+<!--                                                    <a href="#">-->
+<!--                                                        <i class="icon-social-dribbble"></i>-->
+<!--                                                    </a>-->
+<!--                                                </li>-->
+<!--                                            </ul>-->
+                                        </div>
+<!--                                        <div class="c-position"> Caption, Hyperion </div>-->
+                                        <p> 联系方式为：1234567890 </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="c-content-person-1">
+                                    <div class="c-caption c-content-overlay">
+                                        <div class="c-overlay-wrapper">
+                                            <div class="c-overlay-content">
+                                                <a href="#">
+                                                    <i class="icon-link"></i>
+                                                </a>
+<!--                                                <a href="assets/base/img/content/team/person5.jpg" data-lightbox="fancybox" data-fancybox-group="gallery-1">-->
+<!--                                                    <i class="icon-magnifier"></i>-->
+<!--                                                </a>-->
+                                            </div>
+                                        </div>
+<!--                                        <img src="assets/base/img/content/team/person5.jpg" class="img-responsive c-overlay-object" alt=""> -->
+                                    </div>
+                                    <div class="c-body">
+                                        <div class="c-head">
+                                            <div class="c-name c-font-uppercase c-font-bold">团队成员3</div>
+<!--                                            <ul class="c-socials c-theme-ul">-->
+<!--                                                <li>-->
+<!--                                                    <a href="#">-->
+<!--                                                        <i class="icon-social-twitter"></i>-->
+<!--                                                    </a>-->
+<!--                                                </li>-->
+<!--                                                <li>-->
+<!--                                                    <a href="#">-->
+<!--                                                        <i class="icon-social-facebook"></i>-->
+<!--                                                    </a>-->
+<!--                                                </li>-->
+<!--                                                <li>-->
+<!--                                                    <a href="#">-->
+<!--                                                        <i class="icon-social-dribbble"></i>-->
+<!--                                                    </a>-->
+<!--                                                </li>-->
+<!--                                            </ul>-->
+                                        </div>
+<!--                                        <div class="c-position"> Entrepreneur </div>-->
+                                        <p> 联系方式为：1234567890 </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="c-content-person-1">
+                                    <div class="c-caption c-content-overlay">
+                                        <div class="c-overlay-wrapper">
+                                            <div class="c-overlay-content">
+                                                <a href="#">
+                                                    <i class="icon-link"></i>
+                                                </a>
+<!--                                                <a href="assets/base/img/content/team/person4.jpg" data-lightbox="fancybox" data-fancybox-group="gallery-1">-->
+<!--                                                    <i class="icon-magnifier"></i>-->
+<!--                                                </a>-->
+                                            </div>
+                                        </div>
+<!--                                        <img src="assets/base/img/content/team/person4.jpg" class="img-responsive c-overlay-object" alt=""> -->
+                                    </div>
+                                    <div class="c-body">
+                                        <div class="c-head">
+                                            <div class="c-name c-font-uppercase c-font-bold">团队成员4</div>
+<!--                                            <ul class="c-socials c-theme-ul">-->
+<!--                                                <li>-->
+<!--                                                    <a href="#">-->
+<!--                                                        <i class="icon-social-twitter"></i>-->
+<!--                                                    </a>-->
+<!--                                                </li>-->
+<!--                                                <li>-->
+<!--                                                    <a href="#">-->
+<!--                                                        <i class="icon-social-facebook"></i>-->
+<!--                                                    </a>-->
+<!--                                                </li>-->
+<!--                                                <li>-->
+<!--                                                    <a href="#">-->
+<!--                                                        <i class="icon-social-dribbble"></i>-->
+<!--                                                    </a>-->
+<!--                                                </li>-->
+<!--                                            </ul>-->
+                                        </div>
+<!--                                        <div class="c-position"> CTO, Octoberite </div>-->
+                                        <p> 联系方式为：1234567890 </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="c-content-person-1">
+                                    <div class="c-caption c-content-overlay">
+                                        <div class="c-overlay-wrapper">
+                                            <div class="c-overlay-content">
+                                                <a href="#">
+                                                    <i class="icon-link"></i>
+                                                </a>
+<!--                                                <a href="assets/base/img/content/team/person1.jpg" data-lightbox="fancybox" data-fancybox-group="gallery-1">-->
+<!--                                                    <i class="icon-magnifier"></i>-->
+<!--                                                </a>-->
+                                            </div>
+                                        </div>
+<!--                                        <img src="assets/base/img/content/team/person1.jpg" class="img-responsive c-overlay-object" alt=""> -->
+                                    </div>
+                                    <div class="c-body">
+                                        <div class="c-head">
+                                            <div class="c-name c-font-uppercase c-font-bold">团队成员5</div>
+<!--                                            <ul class="c-socials c-theme-ul">-->
+<!--                                                <li>-->
+<!--                                                    <a href="#">-->
+<!--                                                        <i class="icon-social-twitter"></i>-->
+<!--                                                    </a>-->
+<!--                                                </li>-->
+<!--                                                <li>-->
+<!--                                                    <a href="#">-->
+<!--                                                        <i class="icon-social-facebook"></i>-->
+<!--                                                    </a>-->
+<!--                                                </li>-->
+<!--                                                <li>-->
+<!--                                                    <a href="#">-->
+<!--                                                        <i class="icon-social-dribbble"></i>-->
+<!--                                                    </a>-->
+<!--                                                </li>-->
+<!--                                            </ul>-->
+                                        </div>
+<!--                                        <div class="c-position"> CEO, Philly </div>-->
+                                        <p> 联系方式为：1234567890 </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End-->
+                    </div>
+                    <!-- End-->
+                </div>
+            </div>
+            <!-- END: CONTENT/SLIDERS/TEAM-1 -->
+            <!-- BEGIN: CONTENT/MISC/SERVICES-1 -->
+            <div class="c-content-box c-size-md c-bg-grey-1  ">
+                <div class="container">
+                    <div class="c-content-feature-2-grid" data-auto-height="true" data-mode="base-height">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="c-content-feature-2" data-height="height">
+                                    <div class="c-icon-wrapper">
+                                        <div class="c-content-line-icon c-theme c-icon-screen-chart"></div>
+                                    </div>
+                                    <h3 class="c-font-uppercase c-font-bold c-title">课程选购</h3>
+                                    <p>Course of choose and buy</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="c-content-feature-2" data-height="height">
+                                    <div class="c-icon-wrapper">
+                                        <div class="c-content-line-icon c-theme c-icon-support"></div>
+                                    </div>
+                                    <h3 class="c-font-uppercase c-font-bold c-title">交流论坛</h3>
+                                    <p>Conversation Forum</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="c-content-feature-2" data-height="height">
+                                    <div class="c-icon-wrapper">
+                                        <div class="c-content-line-icon c-theme c-icon-comment"></div>
+                                    </div>
+                                    <h3 class="c-font-uppercase c-font-bold c-title">资源分享</h3>
+                                    <p>Resource sharing</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="c-content-feature-2" data-wow-delay1="2s" data-height="height">
+                                    <div class="c-icon-wrapper">
+                                        <div class="c-content-line-icon c-theme c-icon-bulb"></div>
+                                    </div>
+                                    <h3 class="c-font-uppercase c-font-bold c-title">学习空间</h3>
+                                    <p>Learning space</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="c-content-v-center c-theme-bg wow bounceInUp" data-wow-delay1="2s" data-height="height">
+                                    <div class="c-wrapper">
+                                        <div class="c-body c-padding-20 c-center">
+                                            <h3 class="c-font-19 c-line-height-28 c-font-uppercase c-font-white c-font-bold"> 学习不是人生的全部，但学习都征服不了，那你还能做什么？ </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="c-content-feature-2" data-wow-delay1="2s" data-height="height">
+                                    <div class="c-icon-wrapper">
+                                        <div class="c-content-line-icon c-theme c-icon-globe"></div>
+                                    </div>
+                                    <h3 class="c-font-uppercase c-font-bold c-title">课程测试</h3>
+                                    <p>Course test</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a name="footer"></a>
+        <footer th:replace="index/header :: footer"></footer>
+        <div class="c-layout-go2top">
+            <i class="icon-arrow-up"></i>
+        </div>
+<!--	<script src="../assets/global/plugins/excanvas.min.js"></script> -->
+<!--	<![endif]&ndash;&gt;-->
+<!--        <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>-->
+<!--        <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>-->
+<!--        <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>-->
+<!--        <script src="assets/plugins/jquery.easing.min.js" type="text/javascript"></script>-->
+<!--        <script src="assets/plugins/reveal-animate/wow.js" type="text/javascript"></script>-->
+<!--        <script src="assets/base/js/scripts/reveal-animate/reveal-animate.js" type="text/javascript"></script>-->
+<!--        &lt;!&ndash; END: CORE PLUGINS &ndash;&gt;-->
+<!--        &lt;!&ndash; BEGIN: LAYOUT PLUGINS &ndash;&gt;-->
+<!--        <script src="assets/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js" type="text/javascript"></script>-->
+<!--        <script src="assets/plugins/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>-->
+<!--        <script src="assets/plugins/counterup/jquery.counterup.min.js" type="text/javascript"></script>-->
+<!--        <script src="assets/plugins/counterup/jquery.waypoints.min.js" type="text/javascript"></script>-->
+<!--        <script src="assets/plugins/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>-->
+<!--        <script src="assets/plugins/slider-for-bootstrap/js/bootstrap-slider.js" type="text/javascript"></script>-->
+<!--        &lt;!&ndash; END: LAYOUT PLUGINS &ndash;&gt;-->
+<!--        &lt;!&ndash; BEGIN: THEME SCRIPTS &ndash;&gt;-->
+<!--        <script src="assets/base/js/components.js" type="text/javascript"></script>-->
+<!--        <script src="assets/base/js/components-shop.js" type="text/javascript"></script>-->
+<!--        <script src="assets/base/js/app.js" type="text/javascript"></script>-->
+<!--        <script>-->
+<!--            $(document).ready(function()-->
+<!--            {-->
+<!--                App.init(); // init core    -->
+<!--            });-->
+<!--        </script>-->
+<!--        &lt;!&ndash; END: THEME SCRIPTS &ndash;&gt;-->
+<!--        &lt;!&ndash; END: LAYOUT/BASE/BOTTOM &ndash;&gt;-->
+    <script th:src="@{/assets/plugins/jquery.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/jquery-migrate.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/bootstrap/js/bootstrap.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/jquery.easing.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/reveal-animate/wow.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/scripts/reveal-animate/reveal-animate.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/jquery.themepunch.tools.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/jquery.themepunch.revolution.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/extensions/revolution.extension.slideanims.min.js}"
+            type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/extensions/revolution.extension.layeranimation.min.js}"
+            type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/extensions/revolution.extension.navigation.min.js}"
+            type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/extensions/revolution.extension.video.min.js}"
+            type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/owl-carousel/owl.carousel.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/counterup/jquery.waypoints.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/counterup/jquery.counterup.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/fancybox/jquery.fancybox.pack.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/slider-for-bootstrap/js/bootstrap-slider.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/components.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/components-shop.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/app.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/scripts/revo-slider/slider-11.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/isotope/isotope.pkgd.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/isotope/imagesloaded.pkgd.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/isotope/packery-mode.pkgd.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/ilightbox/js/jquery.requestAnimationFrame.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/ilightbox/js/jquery.mousewheel.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/ilightbox/js/ilightbox.packed.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/scripts/pages/isotope-gallery.js}" type="text/javascript"></script>
+    </body>
+
+</html>

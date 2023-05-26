@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<!--    <head>-->
+<!--        <meta charset="utf-8" />-->
+<!--        <title>简学教育</title>-->
+<!--        <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--        <meta content="width=device-width, initial-scale=1.0" name="viewport" />-->
+<!--        <meta http-equiv="Content-type" content="text/html; charset=utf-8">-->
+<!--        <meta content="" name="description" />-->
+<!--        <meta content="" name="author" />-->
+<!--        &lt;!&ndash; BEGIN GLOBAL MANDATORY STYLES &ndash;&gt;-->
+<!--        <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700&amp;subset=all' rel='stylesheet' type='text/css'>-->
+<!--        <link href="assets/plugins/socicon/socicon.css" rel="stylesheet" type="text/css" />-->
+<!--        <link href="assets/plugins/bootstrap-social/bootstrap-social.css" rel="stylesheet" type="text/css" />-->
+<!--        <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />-->
+<!--        <link href="assets/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />-->
+<!--        <link href="assets/plugins/animate/animate.min.css" rel="stylesheet" type="text/css" />-->
+<!--        <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />-->
+<!--        &lt;!&ndash; END GLOBAL MANDATORY STYLES &ndash;&gt;-->
+<!--        &lt;!&ndash; BEGIN: BASE PLUGINS  &ndash;&gt;-->
+<!--        <link href="assets/plugins/cubeportfolio/css/cubeportfolio.min.css" rel="stylesheet" type="text/css" />-->
+<!--        <link href="assets/plugins/owl-carousel/owl.carousel.css" rel="stylesheet" type="text/css" />-->
+<!--        <link href="assets/plugins/owl-carousel/owl.theme.css" rel="stylesheet" type="text/css" />-->
+<!--        <link href="assets/plugins/owl-carousel/owl.transitions.css" rel="stylesheet" type="text/css" />-->
+<!--        <link href="assets/plugins/fancybox/jquery.fancybox.css" rel="stylesheet" type="text/css" />-->
+<!--        <link href="assets/plugins/slider-for-bootstrap/css/slider.css" rel="stylesheet" type="text/css" />-->
+<!--        &lt;!&ndash; END: BASE PLUGINS &ndash;&gt;-->
+<!--        &lt;!&ndash; BEGIN THEME STYLES &ndash;&gt;-->
+<!--        <link href="assets/base/css/plugins.css" rel="stylesheet" type="text/css" />-->
+<!--        <link href="assets/base/css/components.css" id="style_components" rel="stylesheet" type="text/css" />-->
+<!--        <link href="assets/base/css/themes/default.css" rel="stylesheet" id="style_theme" type="text/css" />-->
+<!--        <link href="assets/base/css/custom.css" rel="stylesheet" type="text/css" />-->
+<!--        &lt;!&ndash; END THEME STYLES &ndash;&gt;-->
+<!--        <link rel="shortcut icon" href="favicon.ico" /> </head>-->
+
+
+<head th:replace="index/header :: css"></head>
+
+    <body class="c-layout-header-fixed c-layout-header-mobile-fixed">
+    <header th:replace="index/header :: header"></header>
+    <div th:replace="index/header :: forget"></div>
+    <div th:replace="index/header :: register"></div>
+    <div th:replace="index/header :: login"></div>
+    <nav th:replace="index/header :: style"></nav>
+        <div class="c-layout-page">
+            <!-- BEGIN: LAYOUT/BREADCRUMBS/BREADCRUMBS-3 -->
+            <div class="c-layout-breadcrumbs-1 c-subtitle c-fonts-uppercase c-fonts-bold c-bordered c-bordered-both">
+                <div class="container">
+                    <div class="c-page-title c-pull-left">
+                        <h3 class="c-font-uppercase c-font-sbold">常见问题</h3>
+                    </div>
+                </div>
+            </div>
+            <!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-3 -->
+            <!-- BEGIN: PAGE CONTENT -->
+            <div class="c-content-box c-size-md">
+                <div class="container">
+                    <div class="row c-page-faq-2">
+<!--                        <div class="col-sm-3">-->
+<!--                            <ul class="nav nav-tabs c-faq-tabs" data-tabs="tabs">-->
+<!--                                <li class="active">-->
+<!--                                    <a href="#all" data-toggle="tab">全部</a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="#buying" data-toggle="tab">购买</a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="#author" data-toggle="tab">创始人</a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="#account" data-toggle="tab">账户</a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="#copyright" data-toggle="tab">版权</a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="#community" data-toggle="tab">社区</a>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+                        <div class="col-sm-9">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="all">
+                                    <div class="c-content-title-1">
+<!--                                        <h3 class="c-font-uppercase c-font-bold"></h3>-->
+                                        <div class="c-line-left"></div>
+                                    </div>
+                                    <div class="c-content-accordion-1">
+                                        <div class="panel-group" id="accordion" role="tablist">
+                                            <div class="panel">
+                                                <div class="panel-heading" role="tab" id="heading1">
+                                                    <h4 class="panel-title">
+                                                        <a class="" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                                            <i class="c-theme-font fa fa-check-circle-o c-theme-font"></i> 可以从哪找到简学？</a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading1">
+                                                    <div class="panel-body">直接输入地址或从百度搜索即可</div>
+                                                </div>
+                                            </div>
+                                            <div class="panel">
+                                                <div class="panel-heading" role="tab" id="heading2">
+                                                    <h4 class="panel-title">
+                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                                            <i class="c-theme-font fa fa-life-ring c-theme-font"></i> 简学反馈</a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+                                                    <div class="panel-body">项目正在完善ing~~</div>
+                                                </div>
+                                            </div>
+                                            <div class="panel">
+                                                <div class="panel-heading" role="tab" id="heading3">
+                                                    <h4 class="panel-title">
+                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                                            <i class="c-theme-font fa fa-question c-theme-font"></i> 我如何使用简学？</a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
+                                                    <div class="panel-body">可通过简学进行学习课程，创建课程</div>
+                                                </div>
+                                            </div>
+                                            <div class="panel">
+                                                <div class="panel-heading" role="tab" id="heading4">
+                                                    <h4 class="panel-title">
+                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                                            <i class="c-theme-font fa fa-credit-card"></i> 我应该选择哪种付款方式?</a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+                                                    <div class="panel-body">都可使用，简学试运营阶段采用虚拟支付</div>
+                                                </div>
+                                            </div>
+                                            <div class="panel">
+                                                <div class="panel-heading" role="tab" id="heading5">
+                                                    <h4 class="panel-title">
+                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                                            <i class="c-theme-font fa fa-copyright"></i> 我可以在我的课程中使用重复名称吗?</a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
+                                                    <div class="panel-body">可以！课程可以包含多门</div>
+                                                </div>
+                                            </div>
+                                            <div class="panel">
+                                                <div class="panel-heading" role="tab" id="heading6">
+                                                    <h4 class="panel-title">
+                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                                                            <i class="c-theme-font fa fa-history"></i> 历史订单在哪？</a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading6">
+                                                    <div class="panel-body">在我的菜单-->订单历史 可查看</div>
+                                                </div>
+                                            </div>
+                                            <div class="panel">
+                                                <div class="panel-heading" role="tab" id="heading7">
+                                                    <h4 class="panel-title">
+                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                                                            <i class="c-theme-font fa fa-user"></i> 我如何更改用户名？</a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading7">
+                                                    <div class="panel-body">简学完善中，会持续更新~~</div>
+                                                </div>
+                                            </div>
+                                            <div class="panel">
+                                                <div class="panel-heading" role="tab" id="heading8">
+                                                    <h4 class="panel-title">
+                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse8" aria-expanded="false" aria-controls="collapse8">
+                                                            <i class="c-theme-font fa fa-columns"></i> 如何与开发者合作？</a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading8">
+                                                    <div class="panel-body">联系下方电话或邮箱进行了解</div>
+                                                </div>
+                                            </div>
+                                            <div class="panel">
+                                                <div class="panel-heading" role="tab" id="heading9">
+                                                    <h4 class="panel-title">
+                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse9" aria-expanded="false" aria-controls="collapse9">
+                                                            <i class="c-theme-font fa fa-unlock-alt"></i> 我怎么修改我的密码？</a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapse9" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading9">
+                                                    <div class="panel-body">可联系后台管理员进行更改，或登陆时有忘记密码选择</div>
+                                                </div>
+                                            </div>
+                                            <div class="panel">
+                                                <div class="panel-heading" role="tab" id="heading10">
+                                                    <h4 class="panel-title">
+                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse10" aria-expanded="false" aria-controls="collapse10">
+                                                            <i class="c-theme-font fa fa-map-marker"></i> 对简学的介绍</a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapse10" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading10">
+                                                    <div class="panel-body">  </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel">
+                                                <div class="panel-heading" role="tab" id="heading11">
+                                                    <h4 class="panel-title">
+                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse11" aria-expanded="false" aria-controls="collapse11">
+                                                            <i class="c-theme-font fa fa-keyboard-o"></i> 怎么使用查找工具？</a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapse11" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading11">
+                                                    <div class="panel-body">顶部有“放大镜”似的标识，点击输入课程名即可搜索</div>
+                                                </div>
+                                            </div>
+                                            <div class="panel">
+                                                <div class="panel-heading" role="tab" id="heading12">
+                                                    <h4 class="panel-title">
+                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse12" aria-expanded="false" aria-controls="collapse12">
+                                                            <i class="c-theme-font fa fa-file-excel-o"></i> 非法分发文件</a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapse12" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading12">
+                                                    <div class="panel-body">简学会根据提交的文件进行读取内容，识别是否含有非法软件，会持续更新~~</div>
+                                                </div>
+                                            </div>
+                                            <div class="panel">
+                                                <div class="panel-heading" role="tab" id="heading13">
+                                                    <h4 class="panel-title">
+                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse13" aria-expanded="false" aria-controls="collapse13">
+                                                            <i class="c-theme-font fa fa-exclamation-circle"></i>保护你的版权</a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapse13" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading13">
+                                                    <div class="panel-body">试运营阶段 尚未完善，请注意防骗！</div>
+                                                </div>
+                                            </div>
+                                            <div class="panel">
+                                                <div class="panel-heading" role="tab" id="heading14">
+                                                    <h4 class="panel-title">
+                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse14" aria-expanded="false" aria-controls="collapse14">
+                                                            <i class="c-theme-font fa fa-bookmark-o"></i> 版权声明指南</a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapse14" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading14">
+                                                    <div class="panel-body"> 持续更新~~</div>
+                                                </div>
+                                            </div>
+                                            <div class="panel">
+                                                <div class="panel-heading" role="tab" id="heading15">
+                                                    <h4 class="panel-title">
+                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse15" aria-expanded="false" aria-controls="collapse15">
+                                                            <i class="c-theme-font fa fa-comments-o"></i> 论坛和社区规则</a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapse15" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading15">
+                                                    <div class="panel-body"> 持续更新~~ </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+<!--                                <div class="tab-pane" id="buying">-->
+<!--                                    <div class="c-content-title-1">-->
+<!--                                        <h3 class="c-font-uppercase c-font-bold">购买</h3>-->
+<!--                                        <div class="c-line-left"></div>-->
+<!--                                    </div>-->
+<!--                                    <div class="c-content-accordion-1">-->
+<!--                                        <div class="panel-group" id="accordion" role="tablist">-->
+<!--                                            <div class="panel">-->
+<!--                                                <div class="panel-heading" role="tab" id="heading1-buy">-->
+<!--                                                    <h4 class="panel-title">-->
+<!--                                                        <a class="" data-toggle="collapse" data-parent="#accordion" href="#collapse1-buy" aria-expanded="true" aria-controls="collapse1-buy">-->
+<!--                                                            <i class="c-theme-font fa fa-check-circle-o c-theme-font"></i> 可以从哪找到简学？</a>-->
+<!--                                                    </h4>-->
+<!--                                                </div>-->
+<!--                                                <div id="collapse1-buy" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading1-buy">-->
+<!--                                                    <div class="panel-body">   </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <div class="panel">-->
+<!--                                                <div class="panel-heading" role="tab" id="heading3-buy">-->
+<!--                                                    <h4 class="panel-title">-->
+<!--                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse3-buy" aria-expanded="false" aria-controls="collapse3-buy">-->
+<!--                                                            <i class="c-theme-font fa fa-question c-theme-font"></i> 我如何使用简学？</a>-->
+<!--                                                    </h4>-->
+<!--                                                </div>-->
+<!--                                                <div id="collapse3-buy" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3-buy">-->
+<!--                                                    <div class="panel-body">  </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <div class="panel">-->
+<!--                                                <div class="panel-heading" role="tab" id="heading14-buy">-->
+<!--                                                    <h4 class="panel-title">-->
+<!--                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse14-buy" aria-expanded="false" aria-controls="collapse14-buy">-->
+<!--                                                            <i class="c-theme-font fa fa-bookmark-o"></i> 版权声明指南</a>-->
+<!--                                                    </h4>-->
+<!--                                                </div>-->
+<!--                                                <div id="collapse14-buy" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading14-buy">-->
+<!--                                                    <div class="panel-body">  </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="tab-pane" id="author">-->
+<!--                                    <div class="c-content-title-1">-->
+<!--                                        <h3 class="c-font-uppercase c-font-bold">创始人</h3>-->
+<!--                                        <div class="c-line-left"></div>-->
+<!--                                    </div>-->
+<!--                                    <div class="c-content-accordion-1">-->
+<!--                                        <div class="panel-group" id="accordion" role="tablist">-->
+<!--                                            <div class="panel">-->
+<!--                                                <div class="panel-heading" role="tab" id="author-heading4">-->
+<!--                                                    <h4 class="panel-title">-->
+<!--                                                        <a class="" data-toggle="collapse" data-parent="#accordion" href="#author-collapse4" aria-expanded="true" aria-controls="author-collapse4">-->
+<!--                                                            <i class="c-theme-font fa fa-credit-card"></i> 我应该选择哪种付款方式?</a>-->
+<!--                                                    </h4>-->
+<!--                                                </div>-->
+<!--                                                <div id="author-collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="author-heading4">-->
+<!--                                                    <div class="panel-body">  </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <div class="panel">-->
+<!--                                                <div class="panel-heading" role="tab" id="author-heading6">-->
+<!--                                                    <h4 class="panel-title">-->
+<!--                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#author-collapse6" aria-expanded="false" aria-controls="author-collapse6">-->
+<!--                                                            <i class="c-theme-font fa fa-history"></i> 历史支付率</a>-->
+<!--                                                    </h4>-->
+<!--                                                </div>-->
+<!--                                                <div id="author-collapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="author-heading6">-->
+<!--                                                    <div class="panel-body">  </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <div class="panel">-->
+<!--                                                <div class="panel-heading" role="tab" id="author-heading8">-->
+<!--                                                    <h4 class="panel-title">-->
+<!--                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#author-collapse8" aria-expanded="false" aria-controls="author-collapse8">-->
+<!--                                                            <i class="c-theme-font fa fa-columns"></i> 作者合作</a>-->
+<!--                                                    </h4>-->
+<!--                                                </div>-->
+<!--                                                <div id="author-collapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="author-heading8">-->
+<!--                                                    <div class="panel-body"> </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <div class="panel">-->
+<!--                                                <div class="panel-heading" role="tab" id="author-heading10">-->
+<!--                                                    <h4 class="panel-title">-->
+<!--                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#author-collapse10" aria-expanded="false" aria-controls="author-collapse10">-->
+<!--                                                            <i class="c-theme-font fa fa-map-marker"></i> 对简学的介绍</a>-->
+<!--                                                    </h4>-->
+<!--                                                </div>-->
+<!--                                                <div id="author-collapse10" class="panel-collapse collapse" role="tabpanel" aria-labelledby="author-heading10">-->
+<!--                                                    <div class="panel-body">  </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="tab-pane" id="account">-->
+<!--                                    <div class="c-content-title-1">-->
+<!--                                        <h3 class="c-font-uppercase c-font-bold">账户</h3>-->
+<!--                                        <div class="c-line-left"></div>-->
+<!--                                    </div>-->
+<!--                                    <div class="c-content-accordion-1">-->
+<!--                                        <div class="panel-group" id="accordion" role="tablist">-->
+<!--                                            <div class="panel">-->
+<!--                                                <div class="panel-heading" role="tab" id="acc-heading7">-->
+<!--                                                    <h4 class="panel-title">-->
+<!--                                                        <a class="" data-toggle="collapse" data-parent="#accordion" href="#acc-collapse7" aria-expanded="true" aria-controls="acc-collapse7">-->
+<!--                                                            <i class="c-theme-font fa fa-user"></i> 我如何更改用户名？</a>-->
+<!--                                                    </h4>-->
+<!--                                                </div>-->
+<!--                                                <div id="acc-collapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="acc-heading7">-->
+<!--                                                    <div class="panel-body">  </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <div class="panel">-->
+<!--                                                <div class="panel-heading" role="tab" id="acc-heading9">-->
+<!--                                                    <h4 class="panel-title">-->
+<!--                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#acc-collapse9" aria-expanded="false" aria-controls="acc-collapse9">-->
+<!--                                                            <i class="c-theme-font fa fa-unlock-alt"></i> 我怎么修改我的密码？</a>-->
+<!--                                                    </h4>-->
+<!--                                                </div>-->
+<!--                                                <div id="acc-collapse9" class="panel-collapse collapse" role="tabpanel" aria-labelledby="acc-heading9">-->
+<!--                                                    <div class="panel-body">  </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="tab-pane" id="copyright">-->
+<!--                                    <div class="c-content-title-1">-->
+<!--                                        <h3 class="c-font-uppercase c-font-bold">版权</h3>-->
+<!--                                        <div class="c-line-left"></div>-->
+<!--                                    </div>-->
+<!--                                    <div class="c-content-accordion-1">-->
+<!--                                        <div class="panel-group" id="accordion" role="tablist">-->
+<!--                                            <div class="panel">-->
+<!--                                                <div class="panel-heading" role="tab" id="copy-heading5">-->
+<!--                                                    <h4 class="panel-title">-->
+<!--                                                        <a class="" data-toggle="collapse" data-parent="#accordion" href="#copy-collapse5" aria-expanded="true" aria-controls="copy-collapse5">-->
+<!--                                                            <i class="c-theme-font fa fa-copyright"></i> 我可以在我的项目中使用商标名称吗?</a>-->
+<!--                                                    </h4>-->
+<!--                                                </div>-->
+<!--                                                <div id="copy-collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="copy-heading5">-->
+<!--                                                    <div class="panel-body">  </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <div class="panel">-->
+<!--                                                <div class="panel-heading" role="tab" id="copy-heading11">-->
+<!--                                                    <h4 class="panel-title">-->
+<!--                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#copy-collapse11" aria-expanded="false" aria-controls="copy-collapse11">-->
+<!--                                                            <i class="c-theme-font fa fa-keyboard-o"></i> 怎么使用查找工具？</a>-->
+<!--                                                    </h4>-->
+<!--                                                </div>-->
+<!--                                                <div id="copy-collapse11" class="panel-collapse collapse" role="tabpanel" aria-labelledby="copy-heading11">-->
+<!--                                                    <div class="panel-body">  </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <div class="panel">-->
+<!--                                                <div class="panel-heading" role="tab" id="copy-heading12">-->
+<!--                                                    <h4 class="panel-title">-->
+<!--                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#copy-collapse12" aria-expanded="false" aria-controls="copy-collapse12">-->
+<!--                                                            <i class="c-theme-font fa fa-file-excel-o"></i>非法分发文件</a>-->
+<!--                                                    </h4>-->
+<!--                                                </div>-->
+<!--                                                <div id="copy-collapse12" class="panel-collapse collapse" role="tabpanel" aria-labelledby="copy-heading12">-->
+<!--                                                    <div class="panel-body">   </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <div class="panel">-->
+<!--                                                <div class="panel-heading" role="tab" id="copy-heading13">-->
+<!--                                                    <h4 class="panel-title">-->
+<!--                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#copy-collapse13" aria-expanded="false" aria-controls="copy-collapse13">-->
+<!--                                                            <i class="c-theme-font fa fa-exclamation-circle"></i> 保护你的版权</a>-->
+<!--                                                    </h4>-->
+<!--                                                </div>-->
+<!--                                                <div id="copy-collapse13" class="panel-collapse collapse" role="tabpanel" aria-labelledby="copy-heading13">-->
+<!--                                                    <div class="panel-body">  </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="tab-pane" id="community">-->
+<!--                                    <div class="c-content-title-1">-->
+<!--                                        <h3 class="c-font-uppercase c-font-bold">社区</h3>-->
+<!--                                        <div class="c-line-left"></div>-->
+<!--                                    </div>-->
+<!--                                    <div class="c-content-accordion-1">-->
+<!--                                        <div class="panel-group" id="accordion" role="tablist">-->
+<!--                                            <div class="panel">-->
+<!--                                                <div class="panel-heading" role="tab" id="comm-heading2">-->
+<!--                                                    <h4 class="panel-title">-->
+<!--                                                        <a class="" data-toggle="collapse" data-parent="#accordion" href="#comm-collapse2" aria-expanded="true" aria-controls="comm-collapse2">-->
+<!--                                                            <i class="c-theme-font fa fa-life-ring c-theme-font"></i> 简学反馈</a>-->
+<!--                                                    </h4>-->
+<!--                                                </div>-->
+<!--                                                <div id="comm-collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="comm-heading2">-->
+<!--                                                    <div class="panel-body">  </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <div class="panel">-->
+<!--                                                <div class="panel-heading" role="tab" id="comm-heading15">-->
+<!--                                                    <h4 class="panel-title">-->
+<!--                                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#comm-collapse15" aria-expanded="false" aria-controls="comm-collapse15">-->
+<!--                                                            <i class="c-theme-font fa fa-comments-o"></i> 论坛和社区规则</a>-->
+<!--                                                    </h4>-->
+<!--                                                </div>-->
+<!--                                                <div id="comm-collapse15" class="panel-collapse collapse" role="tabpanel" aria-labelledby="comm-heading15">-->
+<!--                                                    <div class="panel-body"> </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END: PAGE CONTENT -->
+        </div>
+        <!-- END: PAGE CONTAINER -->
+        <!-- BEGIN: LAYOUT/FOOTERS/FOOTER-5 -->
+        <a name="footer"></a>
+        <footer th:replace="index/header :: footer"></footer>
+        <!-- END: LAYOUT/FOOTERS/FOOTER-5 -->
+        <!-- BEGIN: LAYOUT/FOOTERS/GO2TOP -->
+        <div class="c-layout-go2top">
+            <i class="icon-arrow-up"></i>
+        </div>
+<!--        &lt;!&ndash; END: LAYOUT/FOOTERS/GO2TOP &ndash;&gt;-->
+<!--        &lt;!&ndash; BEGIN: LAYOUT/BASE/BOTTOM &ndash;&gt;-->
+<!--        &lt;!&ndash; BEGIN: CORE PLUGINS &ndash;&gt;-->
+<!--        &lt;!&ndash;[if lt IE 9]>-->
+<!--	<script src="../assets/global/plugins/excanvas.min.js"></script> -->
+<!--	<![endif]&ndash;&gt;-->
+<!--        <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>-->
+<!--        <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>-->
+<!--        <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>-->
+<!--        <script src="assets/plugins/jquery.easing.min.js" type="text/javascript"></script>-->
+<!--        <script src="assets/plugins/reveal-animate/wow.js" type="text/javascript"></script>-->
+<!--        <script src="assets/base/js/scripts/reveal-animate/reveal-animate.js" type="text/javascript"></script>-->
+<!--        &lt;!&ndash; END: CORE PLUGINS &ndash;&gt;-->
+<!--        &lt;!&ndash; BEGIN: LAYOUT PLUGINS &ndash;&gt;-->
+<!--        <script src="assets/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js" type="text/javascript"></script>-->
+<!--        <script src="assets/plugins/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>-->
+<!--        <script src="assets/plugins/counterup/jquery.counterup.min.js" type="text/javascript"></script>-->
+<!--        <script src="assets/plugins/counterup/jquery.waypoints.min.js" type="text/javascript"></script>-->
+<!--        <script src="assets/plugins/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>-->
+<!--        <script src="assets/plugins/slider-for-bootstrap/js/bootstrap-slider.js" type="text/javascript"></script>-->
+<!--        &lt;!&ndash; END: LAYOUT PLUGINS &ndash;&gt;-->
+<!--        &lt;!&ndash; BEGIN: THEME SCRIPTS &ndash;&gt;-->
+<!--        <script src="assets/base/js/components.js" type="text/javascript"></script>-->
+<!--        <script src="assets/base/js/components-shop.js" type="text/javascript"></script>-->
+<!--        <script src="assets/base/js/app.js" type="text/javascript"></script>-->
+<!--        <script>-->
+<!--            $(document).ready(function()-->
+<!--            {-->
+<!--                App.init(); // init core    -->
+<!--            });-->
+<!--        </script>-->
+        <!-- END: THEME SCRIPTS -->
+        <!-- BEGIN: PAGE SCRIPTS -->
+    <script th:src="@{/assets/plugins/jquery.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/jquery-migrate.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/bootstrap/js/bootstrap.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/jquery.easing.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/reveal-animate/wow.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/scripts/reveal-animate/reveal-animate.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/jquery.themepunch.tools.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/jquery.themepunch.revolution.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/extensions/revolution.extension.slideanims.min.js}"
+            type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/extensions/revolution.extension.layeranimation.min.js}"
+            type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/extensions/revolution.extension.navigation.min.js}"
+            type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/extensions/revolution.extension.video.min.js}"
+            type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/owl-carousel/owl.carousel.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/counterup/jquery.waypoints.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/counterup/jquery.counterup.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/fancybox/jquery.fancybox.pack.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/slider-for-bootstrap/js/bootstrap-slider.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/components.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/components-shop.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/app.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/scripts/revo-slider/slider-11.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/isotope/isotope.pkgd.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/isotope/imagesloaded.pkgd.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/isotope/packery-mode.pkgd.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/ilightbox/js/jquery.requestAnimationFrame.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/ilightbox/js/jquery.mousewheel.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/ilightbox/js/ilightbox.packed.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/scripts/pages/isotope-gallery.js}" type="text/javascript"></script>
+        <script th:src="@{assets/base/js/scripts/pages/faq.js}" type="text/javascript"></script>
+        <!-- END: PAGE SCRIPTS -->
+        <!-- END: LAYOUT/BASE/BOTTOM -->
+    </body>
+
+</html>

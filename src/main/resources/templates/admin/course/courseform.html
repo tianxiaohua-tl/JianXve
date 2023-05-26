@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <title>添加课程</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" th:href="@{/layuiadmin/layui/css/layui.css}" media="all">
+</head>
+
+<body>
+
+<div class="layui-form" lay-filter="layuiadmin-form-courseadmin" id="layuiadmin-form-courseadmin"
+     style="padding: 20px 0 0 0;">
+  <form enctype="multipart/form-data" method="post" action="/addcourse">
+    <div class="layui-form-item">
+      <label class="layui-form-label">ISBN</label>
+      <div class="layui-input-inline">
+        <input type="text" name="ISBN" lay-verify="required" placeholder="请输入ISBN" autocomplete="off"
+               class="layui-input">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">课程名</label>
+      <div class="layui-input-inline">
+        <input type="text" name="CourseName" lay-verify="required" placeholder="请输入课程名" autocomplete="off"
+               class="layui-input">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">创建人</label>
+      <div class="layui-input-inline">
+        <input type="text" name="CreatorName" lay-verify="CreatorName" placeholder="请输入创建人" autocomplete="off"
+               class="layui-input">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">介绍</label>
+      <div class="layui-input-inline">
+        <input type="text" name="Decription" lay-verify="Decription" placeholder="请输入简介" autocomplete="off"
+               class="layui-input">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">图片</label>
+      <div class="layui-input-inline">
+        <input type="file" id="exampleInputFile" name="file" accept="image/*">
+      </div>
+    </div>
+
+    <div class="layui-form-item layui-hide">
+      <!--      <input type="button" lay-submit lay-filter="LAY-user-front-submit" id="LAY-user-front-submit" value="确认">-->
+
+    </div>
+    <div class="layui-form-item">
+      <center><button class="layui-btn" type="submit">提交</button></center>
+    </div>
+  </form>
+</div>
+
+<script th:src="@{/layuiadmin/layui/layui.js}"></script>
+<script th:inline="javascript">
+        layui.config({
+            base: '../../../layuiadmin/' //静态资源所在路径
+        }).extend({
+            index: 'lib/index' //主入口模块
+        }).use(['index', 'table'], function () {
+            var $ = layui.$
+                , form = layui.form
+                , table = layui.table;
+            var ms = [[${ ms }]];
+            var icon = [[${ icon }]];
+            layer.msg(ms, {
+                offset: '25px'
+                , icon: icon
+                , time: 3000
+            });
+        });
+    </script>
+<script>
+        layui.config({
+            base: '../../../layuiadmin/' //静态资源所在路径
+        }).extend({
+            index: 'lib/index' //主入口模块
+        }).use(['index', 'form'], function () {
+            var $ = layui.$
+                , form = layui.form
+        })
+    </script>
+</body>
+
+</html>

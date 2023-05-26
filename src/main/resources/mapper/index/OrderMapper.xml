@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.uzz.springboot.mapper.index.OrderMapper">
+    <insert id="addorder" parameterType="Order">
+        INSERT INTO orderlist(UserISBN,UserTel,CourseISBN,CoursePrice,Entrytime) values (#{UserISBN},#{UserTel},#{ISBN},#{CoursePrice},#{Entrytime})
+    </insert>
+    <insert id="addorder1" parameterType="Order">
+        INSERT INTO orderlist(UserISBN,UserTel,CourseISBN,CoursePrice,note,Entrytime) values (#{UserISBN},#{UserTel},#{ISBN},#{CoursePrice},#{note},#{Entrytime})
+    </insert>
+    <insert id="addstudyspace" parameterType="Order">
+        INSERT INTO studyspace(UserISBN,UserTel,CourseISBN,Entrytime) values (#{UserISBN},#{UserTel},#{ISBN},#{Entrytime})
+    </insert>
+    <delete id="deletecart">
+        DELETE from cart
+    </delete>
+    <select id="selectfororderid" resultType="Order">
+        SELECT * FROM orderlist WHERE UserISBN=#{UserISBN} and CourseISBN=#{CourseISBN}
+    </select>
+    <select id="selectorder" resultType="Order">
+        SELECT * FROM orderlist WHERE UserISBN=#{UserISBN} and CourseISBN=#{CourseISBN}
+    </select>
+    <select id="selectByUserISBN" resultType="Course">
+        SELECT course.*,orderlist.`Entrytime` shijian,orderlist.`orderid`,note,orderlist.`CoursePrice` orderPrice,orderlist.`UserISBN` UserISBN FROM course,orderlist WHERE ISBN IN (SELECT CourseISBN FROM orderlist WHERE UserISBN=#{UserISBN}) AND course.`ISBN`=orderlist.`CourseISBN` AND UserISBN = ${UserISBN} ORDER BY orderlist.`orderid` DESC
+    </select>
+    <delete id="DeleteStudyspace" parameterType="Studyspace">
+        DELETE FROM studyspace WHERE UserISBN=#{UserISBN} AND CourseISBN=#{CourseISBN}
+    </delete>
+
+</mapper>

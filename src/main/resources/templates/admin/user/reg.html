@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <title>注册</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" th:href="@{/layuiadmin/layui/css/layui.css}" media="all">
+  <link rel="stylesheet" th:href="@{/layuiadmin/style/admin.css}" media="all">
+  <link rel="stylesheet" th:href="@{/layuiadmin/style/login.css}" media="all">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <title>邮箱注册登陆Demo</title>
+</head>
+
+<body>
+
+<div class="layadmin-user-login layadmin-user-display-show" id="LAY-user-login" style="display: none;">
+  <div class="layadmin-user-login-main">
+    <div class="layadmin-user-login-box layadmin-user-login-header">
+      <h2>系统名</h2>
+      <p>系统简介</p>
+    </div>
+    <form class="layadmin-user-login-box layadmin-user-login-body layui-form" action="/doregister"
+          method="post">
+      <div class="layui-form-item">
+        <label class="layadmin-user-login-icon layui-icon layui-icon-cellphone"
+               for="LAY-user-login-cellphone"></label>
+        <input type="text" name="telephone" id="LAY-user-login-cellphone" lay-verify="phone"
+               placeholder="手机" class="layui-input">
+      </div>
+      <div class="layui-form-item">
+        <label class="layadmin-user-login-icon layui-icon layui-icon-cellphone"
+               for="emailAd"></label>
+        <input type="text" name="email" id="emailAd" lay-verify="email"
+               placeholder="邮箱" class="layui-input">
+      </div>
+      <div class="layui-form-item">
+        <div class="layui-row">
+          <div class="layui-col-xs7">
+            <label class="layadmin-user-login-icon layui-icon layui-icon-vercode" for="emailcodeid"></label>
+            <input type="text" name="emailcode" id="emailcodeid" lay-verify="required" placeholder="验证码" class="layui-input">
+          </div>
+          <div class="layui-col-xs5">
+            <div style="margin-left: 10px;">
+              <button type="button" class="layui-btn layui-btn-primary layui-btn-fluid" onclick="sendMessage()"  id="LAY-user-getsmscode">获取验证码</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layadmin-user-login-icon layui-icon layui-icon-password"
+               for="LAY-user-login-password"></label>
+        <input type="password" name="password" id="LAY-user-login-password" lay-verify="pass"
+               placeholder="密码" class="layui-input">
+      </div>
+      <div class="layui-form-item">
+        <label class="layadmin-user-login-icon layui-icon layui-icon-password"
+               for="LAY-user-login-repass"></label>
+        <input type="password" name="repass" id="LAY-user-login-repass" lay-verify="required"
+               placeholder="确认密码" class="layui-input">
+      </div>
+      <div class="layui-form-item">
+        <label class="layadmin-user-login-icon layui-icon layui-icon-username"
+               for="LAY-user-login-nickname"></label>
+        <input type="text" name="nickname" id="LAY-user-login-nickname" lay-verify="nickname"
+               placeholder="昵称" class="layui-input">
+      </div>
+      <div class="layui-form-item">
+        <input type="checkbox" name="agreement" lay-skin="primary" title="同意用户协议">
+      </div>
+      <div class="layui-form-item">
+        <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="LAY-user-reg-submit">注 册</button>
+      </div>
+      <div class="layui-trans layui-form-item layadmin-user-login-other">
+        <label>社交账号注册</label>
+        <a href="javascript:;"><i class="layui-icon layui-icon-login-qq"></i></a>
+        <a href="javascript:;"><i class="layui-icon layui-icon-login-wechat"></i></a>
+        <a href="javascript:;"><i class="layui-icon layui-icon-login-weibo"></i></a>
+
+        <a href="/login" class="layadmin-user-jump-change layadmin-link layui-hide-xs">用已有帐号登入</a>
+        <a href="login"
+           class="layadmin-user-jump-change layadmin-link layui-hide-sm layui-show-xs-inline-block">登入</a>
+      </div>
+    </form>
+  </div>
+</div>
+<script type="text/javascript" th:src="@{/js/jquery-2.1.0.js}" ></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+<script type="text/javascript" th:src=@{"/js/main.js}"></script>
+<script th:src="@{/layuiadmin/layui/layui.js}"></script>
+<script th:inline="javascript">
+        layui.config({
+            base: '../../layuiadmin/' //静态资源所在路径
+        }).extend({
+            index: 'lib/index' //主入口模块
+        })
+            .use(['index', 'user'], function () {
+                var $ = layui.$
+                    , setter = layui.setter
+                    , admin = layui.admin
+                    , form = layui.form
+                    , router = layui.router();
+                form.render();
+
+                var ms = [[${ ms }]];
+                var url = [[${ url }]];
+                var icon = [[${ icon }]];
+                var ti = [[${ ti }]];
+                var isUrl = [[${ isUrl }]];
+                if (ms != null) {
+                    layer.msg(ms, {
+                        offset: '25px'
+                        , icon: icon
+                        , time: ti
+                    }, function () {
+                    if(isUrl==1){
+                        location.href = url; //后台主页
+                        }
+                    });
+                }
+            });
+    </script>
+
+<script type="text/javascript">
+    function sendMessage()
+    {
+        var emailAd=document.getElementById("emailAd");
+        $.get("/getCode",{"email":emailAd.value},function (data) {
+            if(data.success)
+            {
+                var wait = 60;
+                var button=document.getElementById("sendCode");
+                (function time(o) {
+                    if (wait == 0) {
+                        o.disabled=false;
+                        o.innerHTML = "免费获取验证码";
+                        wait = 60;
+                    } else {
+                        o.disabled=true;
+                        o.innerHTML = wait + "秒后可以重新发送";
+                        wait--;
+                        setTimeout(function() {
+                            time(o)
+                        }, 1000)
+                    }
+                })(button);
+            }
+        });
+    }
+
+    function tologin()
+    {
+        var email=document.getElementById("email");
+        var code=document.getElementById("code");
+        if(code.value=="")
+        {
+            alert("验证码不能为空");
+            return ;
+        }
+        $.get("/tologin",{"email":email.value,"code":code.value},function (data) {
+            if (data){
+                window.location.href = "/admin";
+            }
+        });
+    }
+</script>
+</body>
+
+</html>

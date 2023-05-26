@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
+<!--<head>-->
+<!--    <meta charset="utf-8" />-->
+<!--    <title>简学教育</title>-->
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta content="width=device-width, initial-scale=1.0" name="viewport" />-->
+<!--    <meta http-equiv="Content-type" content="text/html; charset=utf-8">-->
+<!--    <meta content="" name="description" />-->
+<!--    <meta content="" name="author" />-->
+<!--    <link-->
+<!--        href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700&amp;subset=all'-->
+<!--        rel='stylesheet' type='text/css'>-->
+<!--    <link href="assets/plugins/socicon/socicon.css" rel="stylesheet" type="text/css" />-->
+<!--    <link href="assets/plugins/bootstrap-social/bootstrap-social.css" rel="stylesheet" type="text/css" />-->
+<!--    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />-->
+<!--    <link href="assets/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />-->
+<!--    <link href="assets/plugins/animate/animate.min.css" rel="stylesheet" type="text/css" />-->
+<!--    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />-->
+<!--    <link href="assets/plugins/cubeportfolio/css/cubeportfolio.min.css" rel="stylesheet" type="text/css" />-->
+<!--    <link href="assets/plugins/owl-carousel/owl.carousel.css" rel="stylesheet" type="text/css" />-->
+<!--    <link href="assets/plugins/owl-carousel/owl.theme.css" rel="stylesheet" type="text/css" />-->
+<!--    <link href="assets/plugins/owl-carousel/owl.transitions.css" rel="stylesheet" type="text/css" />-->
+<!--    <link href="assets/plugins/fancybox/jquery.fancybox.css" rel="stylesheet" type="text/css" />-->
+<!--    <link href="assets/plugins/slider-for-bootstrap/css/slider.css" rel="stylesheet" type="text/css" />-->
+<!--    <link href="assets/base/css/plugins.css" rel="stylesheet" type="text/css" />-->
+<!--    <link href="assets/base/css/components.css" id="style_components" rel="stylesheet" type="text/css" />-->
+<!--    <link href="assets/base/css/themes/default.css" rel="stylesheet" id="style_theme" type="text/css" />-->
+<!--    <link href="assets/base/css/custom.css" rel="stylesheet" type="text/css" />-->
+<!--    <link rel="shortcut icon" href="favicon.ico" />-->
+<!--</head>-->
+
+<head th:replace="index/header :: css"></head>
+
+<body class="c-layout-header-fixed c-layout-header-mobile-fixed c-layout-header-topbar c-layout-header-topbar-collapse">
+    <header th:replace="index/header :: header"></header>
+    <div th:replace="index/header :: forget"></div>
+    <div th:replace="index/header :: register"></div>
+    <div th:replace="index/header :: login"></div>
+    <nav th:replace="index/header :: style"></nav>
+    <div class="c-layout-page">
+        <div class="c-layout-breadcrumbs-1 c-subtitle c-fonts-uppercase c-fonts-bold c-bordered c-bordered-both">
+            <div class="container">
+                <div class="c-page-title c-pull-left">
+                    <a th:href="@{/comment}">
+                        <h3 class="c-font-uppercase c-font-sbold">我的评论</h3>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="c-layout-sidebar-menu c-theme ">
+                <ul class="c-sidebar-menu collapse " id="sidebar-menu-1">
+                    <li class="c-dropdown c-open">
+                        <a href="javascript:;" class="c-toggler">我的菜单
+                            <span class="c-arrow"></span>
+                        </a>
+                        <ul class="c-dropdown-menu">
+                            <li class="">
+                                <a th:href="@{/wish}">愿望清单</a>
+                            </li>
+                            <li class="">
+                                <a th:href="@{studyspace}">学习空间</a>
+                            </li>
+                            <li class="">
+                                <a th:href="@{/cart}">购物车</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/orderhistory}">订单历史</a>
+                            </li>
+                            <li class="c-active">
+                                <a th:href="@{/comment}">我的评论</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="c-layout-sidebar-content ">
+                <div class="c-content-title-1">
+                    <h3 class="c-font-uppercase c-font-bold">我的评论</h3>
+                    <h4 class="c-font-uppercase c-font-bold" th:text="@{'共'+${totalnum}+'条评论'}"
+                        th:if="${commentnum==1}"></h4>
+                    <div class="c-line-left"></div>
+                </div>
+                <div th:if="${commentnum==0}">
+                    <br>
+                    <h4 class="c-font-22">评论为空，请去评论</h4>
+                </div>
+                <div class="row c-margin-b-40 c-order-history-2" th:if="${commentnum==1}">
+                    <div class="row c-cart-table-title">
+                        <div class="col-md-2 c-cart-image">
+                            <h3 class="c-font-uppercase c-font-bold c-font-16 c-font-grey-2">课程</h3>
+                        </div>
+                        <div class="col-md-2 c-cart-desc">
+                            <h3 class="c-font-uppercase c-font-bold c-font-16 c-font-grey-2">课程名</h3>
+                        </div>
+                        <div class="col-md-1 c-cart-price">
+                            <h3 class="c-font-uppercase c-font-bold c-font-16 c-font-grey-2">评级</h3>
+                        </div>
+                        <div class="col-md-3 c-cart-total">
+                            <h3 class="c-font-uppercase c-font-bold c-font-16 c-font-grey-2">评论</h3>
+                        </div>
+                        <div class="col-md-2 c-cart-qty">
+                            <h3 class="c-font-uppercase c-font-bold c-font-16 c-font-grey-2">时间</h3>
+                        </div>
+                        <div class="col-md-1 c-cart-price">
+                            <h3 class="c-font-uppercase c-font-bold c-font-16 c-font-grey-2">操作</h3>
+                        </div>
+                    </div>
+                    <div class="row c-cart-table-row" th:each="list : ${commentlist}">
+                        <div class="col-md-2 col-sm-3 col-xs-5 c-cart-image">
+                            <img th:src="@{${list.Img}}" />
+                        </div>
+                        <div class="col-md-2 col-sm-6 col-xs-6 c-cart-desc">
+                            <p>
+                                <a th:href="@{'detail?ISBN='+${list.CourseISBN}}"
+                                    class="c-font-bold c-theme-link c-font-dark" th:text="${list.CourseName}"></a>
+                            </p>
+                        </div>
+                        <div class="clearfix col-md-1 col-sm-3 col-xs-6 c-cart-price">
+                            <p class="c-cart-price c-font-bold" th:text="${list.Grade}"></p>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-6 c-cart-total">
+                            <p class="c-cart-price c-font-bold" th:text="${list.comment}"></p>
+                        </div>
+                        <div class="col-md-2 col-sm-3 col-xs-6 c-cart-qty">
+                            <p th:text="${list.Entrytime}"></p>
+                        </div>
+                        <div class="clearfix col-md-1 col-sm-3 col-xs-6 c-cart-price">
+                            <a th:href="@{'delcomment?CommentId='+${list.CommentId}}"
+                                class="c-theme-link c-cart-remove-desktop">×</a>
+                        </div>
+                    </div>
+                    <div class="c-margin-t-20"></div>
+                    <ul class="c-content-pagination c-square c-theme pull-right">
+                        <li th:if="${last==1}">
+                            已是最后一页
+                        </li>
+                        <li class="c-prev">
+                            <a th:href="@{'/comment?pageNum='+${pageNum-1}}">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/comment?pageNum=1}">1</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/comment?pageNum=2}">2</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/comment?pageNum=3}">3</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/comment?pageNum=4}">4</a>
+                        </li>
+                        <li class="c-next">
+                            <a th:href="@{'/comment?pageNum='+${pageNum+1}}">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a name="footer"></a>
+    <footer th:replace="index/header :: footer"></footer>
+    <div class="c-layout-go2top">
+        <i class="icon-arrow-up"></i>
+    </div>
+<!--    <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>-->
+<!--    <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>-->
+<!--    <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>-->
+<!--    <script src="assets/plugins/jquery.easing.min.js" type="text/javascript"></script>-->
+<!--    <script src="assets/plugins/reveal-animate/wow.js" type="text/javascript"></script>-->
+<!--    <script src="assets/base/js/scripts/reveal-animate/reveal-animate.js" type="text/javascript"></script>-->
+<!--    <script src="assets/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js" type="text/javascript"></script>-->
+<!--    <script src="assets/plugins/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>-->
+<!--    <script src="assets/plugins/counterup/jquery.counterup.min.js" type="text/javascript"></script>-->
+<!--    <script src="assets/plugins/counterup/jquery.waypoints.min.js" type="text/javascript"></script>-->
+<!--    <script src="assets/plugins/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>-->
+<!--    <script src="assets/plugins/slider-for-bootstrap/js/bootstrap-slider.js" type="text/javascript"></script>-->
+<!--    <script src="assets/base/js/components.js" type="text/javascript"></script>-->
+<!--    <script src="assets/base/js/components-shop.js" type="text/javascript"></script>-->
+<!--    <script src="assets/base/js/app.js" type="text/javascript"></script>-->
+<!--    <script>-->
+<!--        $(document).ready(function () {-->
+<!--            App.init();-->
+<!--        });-->
+<!--    </script>-->
+    <script th:src="@{/assets/plugins/jquery.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/jquery-migrate.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/bootstrap/js/bootstrap.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/jquery.easing.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/reveal-animate/wow.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/scripts/reveal-animate/reveal-animate.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/jquery.themepunch.tools.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/jquery.themepunch.revolution.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/extensions/revolution.extension.slideanims.min.js}"
+            type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/extensions/revolution.extension.layeranimation.min.js}"
+            type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/extensions/revolution.extension.navigation.min.js}"
+            type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/extensions/revolution.extension.video.min.js}"
+            type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/owl-carousel/owl.carousel.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/counterup/jquery.waypoints.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/counterup/jquery.counterup.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/fancybox/jquery.fancybox.pack.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/slider-for-bootstrap/js/bootstrap-slider.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/components.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/components-shop.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/app.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/scripts/revo-slider/slider-11.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/isotope/isotope.pkgd.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/isotope/imagesloaded.pkgd.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/isotope/packery-mode.pkgd.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/ilightbox/js/jquery.requestAnimationFrame.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/ilightbox/js/jquery.mousewheel.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/ilightbox/js/ilightbox.packed.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/scripts/pages/isotope-gallery.js}" type="text/javascript"></script>
+    <script th:inline="javascript">
+        var aa = [[${ ms }]];
+        if (aa != null) {
+            alert(aa);
+        }
+    </script>
+    <script type="text/javascript">
+        function sendMessage() {
+            var emailAd = document.getElementById("emailAd");
+            if (emailAd.value == "") {
+                alert("邮箱不能为空");
+                return;
+            }
+            var email_reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+            if (!email_reg.test(emailAd.value)) {
+                alert("请输入正确的邮箱地址");
+                return;
+            }
+            $.get("/getCode", { "email": emailAd.value }, function (data) {
+                if (data.success) {
+                    var wait = 60;
+                    var button = document.getElementById("sendCode");
+                    (function time(o) {
+                        if (wait == 0) {
+                            o.disabled = false;
+                            o.innerHTML = "免费获取验证码";
+                            wait = 60;
+                        } else {
+                            o.disabled = true;
+                            o.innerHTML = wait + "秒后可以重新发送";
+                            wait--;
+                            setTimeout(function () {
+                                time(o)
+                            }, 1000)
+                        }
+                    })(button);
+                }
+            });
+        }
+
+        function tologin() {
+            var email = document.getElementById("email");
+            var code = document.getElementById("code");
+            if (code.value == "") {
+                alert("验证码不能为空");
+                return;
+            }
+            $.get("/tologin", { "email": email.value, "code": code.value }, function (data) {
+                if (data) {
+                    window.location.href = "/admin";
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

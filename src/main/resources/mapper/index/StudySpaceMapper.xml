@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.uzz.springboot.mapper.index.StudySpaceMapper">
+    <select id="selectChapter" resultType="Chapter">
+        SELECT * FROM chapter WHERE CourseISBN=#{CourseISBN} ORDER BY ChapterHao
+    </select>
+    <select id="selectSmallChapter" resultType="Chapter">
+        SELECT * FROM smallchapter WHERE CourseISBN=#{CourseISBN} ORDER BY ChapterHao2
+    </select>
+    <select id="selectSmallChapter2" resultType="Chapter">
+        SELECT * FROM smallchapter WHERE CourseISBN=#{CourseISBN} ORDER BY ChapterHao1
+    </select>
+    <select id="selectBySmallChapter" resultType="Chapter">
+        SELECT * FROM smallchapter WHERE SmallChapterId=#{SmallChapterId}
+    </select>
+    <select id="selectByChapterHao1" resultType="Chapter">
+        SELECT * FROM smallchapter WHERE CourseISBN=#{CourseISBN} AND ChapterHao1=#{ChapterHao1}
+    </select>
+    <select id="selectIsEmpty" resultType="Test">
+        SELECT * FROM test
+        WHERE CourseISBN=#{CourseISBN}
+        AND  UserISBN =#{UserISBN}
+        AND ChapterId=#{ChapterId}
+        AND SmallChapterId =#{SmallChapterId}
+    </select>
+    <insert id="InsertTest1" parameterType="Test">
+        INSERT INTO test(UserISBN,UserName,CourseISBN,ChapterId,SmallChapterId,Work1Name,Work1File,Work1Time)
+        VALUE(#{UserISBN},#{UserName},#{CourseISBN},#{ChapterId},#{SmallChapterId},#{Work1Name},#{Work1File},#{Work1Time})
+    </insert>
+    <update id="InsertTest2" parameterType="Test">
+        UPDATE test
+        set Work2Name=#{Work2Name},Work2File=#{Work2File},Work2Time=#{WorkTime}
+        where UserISBN=#{UserISBN}
+        and CourseISBN=#{CourseISBN}
+        and ChapterId=#{ChapterId}
+        and SmallChapterId=#{SmallChapterId}
+    </update>
+    <select id="selectIsSub" parameterType="Test">
+        SELECT * FROM test
+        WHERE UserISBN=#{UserISBN}
+        AND CourseISBN=#{CourseISBN}
+        AND ChapterId=#{ChapterId}
+        AND SmallChapterId=#{SmallChapterId}
+    </select>
+    <select id="findExamRadioQuestions" parameterType="int" resultType="java.util.HashMap">
+        SELECT q.id,q.subject,
+        q.type, q.chapterid,
+        q.optiona,q.optionb,
+        q.optionc,q.optiond,
+        q.answer,l.coursename
+        FROM  course l,questions q
+        WHERE q.courseisbn=l.isbn
+        AND   q.type='单选'
+        AND   q.chapterid=#{chapterid}
+        AND   q.`courseisbn`=#{courseisbn}
+    </select>
+
+    <select id="findExamCheckboxQuestions" parameterType="int" resultType="java.util.HashMap">
+        SELECT q.id,q.subject,
+        q.type, q.chapterid,
+        q.optiona,q.optionb,
+        q.optionc,q.optiond,
+        q.answer,l.coursename
+        FROM  course l,questions q
+        WHERE q.courseisbn=l.isbn
+        AND   q.type='多选'
+        AND   q.chapterid=#{chapterid}
+        AND   q.`courseisbn`=#{courseisbn}
+    </select>
+
+    <select id="findExamAnswerById" parameterType="String" resultType="Question">
+        SELECT q.id,q.chapterid,
+        q.answer,q.type,q.courseisbn,
+        l.coursename
+        FROM   course  l,questions q
+        WHERE  q.id=#{id}
+        AND    q.`courseisbn`=l.`ISBN`
+    </select>
+
+    <!-- 添加学生考试成绩记录 -->
+    <insert id="addStuExamResult" parameterType="ExamResult">
+        INSERT INTO examresult(courseisbn,chapterid,userisbn,radioscores,checkscores,total,createtime)
+        VALUES(#{courseisbn},#{chapterid},#{userisbn},#{radioscores},#{checkscores},#{total},#{createtime})
+    </insert>
+
+    <select id="SelectUserBYid" resultType="User">
+        SELECT * FROM userdetail WHERE id =#{id}
+    </select>
+    <select id="SelectCourseByisbn" resultType="Course">
+        SELECT * FROM course WHERE ISBN=#{CourseISBN}
+    </select>
+
+    <select id="SelectExam" resultType="ExamResult">
+        SELECT chapter.*,a.*
+        FROM chapter
+        LEFT JOIN (SELECT * FROM examresult WHERE userisbn=#{UserISBN}) a
+        ON chapter.`ChapterHao`=a.`chapterid`
+        AND chapter.`CourseISBN`=a.`courseisbn`
+        WHERE chapter.`CourseISBN`=#{CourseISBN}
+    </select>
+    <select id="SelectExam3" resultType="Question">
+        SELECT chapter.*,a.*
+        FROM chapter
+        LEFT JOIN (SELECT * FROM questions WHERE courseisbn=#{CourseISBN}) a
+        ON chapter.`ChapterHao`=a.`chapterid`
+        AND chapter.`CourseISBN`=a.`courseisbn`
+    </select>
+    <select id="IsExam" resultType="ExamResult">
+        SELECT chapter.*,a.*
+        FROM chapter
+        LEFT JOIN (SELECT * FROM examresult WHERE userisbn=#{UserISBN}) a
+        ON chapter.`ChapterHao`=a.`chapterid`
+        AND chapter.`CourseISBN`=a.`courseisbn`
+        WHERE chapter.`CourseISBN`=#{CourseISBN}
+        AND ChapterHao=#{ChapterHao}
+    </select>
+    <select id="IsTest" resultType="TestResult">
+        SELECT SmallChapter.*,a.work1file,a.work2file,a.grade stugrade
+        FROM SmallChapter
+        LEFT JOIN (SELECT * FROM test WHERE UserISBN=#{UserISBN}) a
+        ON SmallChapter.`ChapterHao2`=a.`SmallChapterId`
+        AND SmallChapter.`ChapterHao1`=a.`ChapterId`
+        AND SmallChapter.`CourseISBN`=a.`CourseISBN`
+        WHERE SmallChapter.CourseISBN=#{CourseISBN}
+    </select>
+    <select id="SelectExam1" resultType="java.util.HashMap">
+        SELECT chapter.*,examresult.*
+        FROM chapter,examresult
+        WHERE chapter.CourseISBN=examresult.courseisbn
+        AND chapter.ChapterHao=examresult.chapterid
+        AND chapter.CourseISBN=#{CourseISBN} AND userisbn=#{UserISBN}
+    </select>
+</mapper>

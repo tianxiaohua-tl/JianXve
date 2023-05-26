@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.uzz.springboot.mapper.index.CourseMapper">
+    <select id="selectBySpecialCourse" resultType="Course">
+        SELECT * FROM course WHERE SpecialCourse = 1
+    </select>
+    <select id="selectAllCourse" resultType="Course">
+        SELECT * FROM course
+    </select>
+    <select id="selectByNameAsc" resultType="Course">
+        SELECT * FROM course ORDER BY CONVERT(CourseName USING gbk) ASC
+    </select>
+    <select id="selectByNameDesc" resultType="Course">
+        SELECT * FROM course ORDER BY CONVERT(CourseName USING gbk) DESC
+    </select>
+    <select id="selectByPriceDesc" resultType="Course">
+        SELECT * FROM course ORDER BY Price DESC
+    </select>
+    <select id="selectByPriceAsc" resultType="Course">
+        SELECT * FROM course ORDER BY Price ASC
+    </select>
+    <select id="selectByCategoryId" resultType="Course">
+        SELECT * FROM course WHERE CategoryId=#{CategoryId}
+    </select>
+    <select id="selectByCategoryIdNameAsc" resultType="Course">
+        SELECT * FROM course WHERE CategoryId=#{CategoryId} ORDER BY CONVERT(CourseName USING gbk) ASC
+    </select>
+    <select id="selectByCategoryIdNameDesc" resultType="Course">
+        SELECT * FROM course WHERE CategoryId=#{CategoryId} ORDER BY CONVERT(CourseName USING gbk) DESC
+    </select>
+    <select id="selectByCategoryIdPriceAsc" resultType="Course">
+        SELECT * FROM course WHERE CategoryId=#{CategoryId} ORDER BY Price ASC
+    </select>
+    <select id="selectByCategoryIdPriceDesc" resultType="Course">
+        SELECT * FROM course WHERE CategoryId=#{CategoryId} ORDER BY Price DESC
+    </select>
+    <select id="selectByAllPrice0" resultType="Course">
+        SELECT * FROM course WHERE Price =0
+    </select>
+    <select id="selectByAllSpecial" resultType="Course">
+        SELECT * FROM course WHERE SpecialCourse =1|| SpecialCourse =3
+    </select>
+    <select id="selectByAllNew" resultType="Course">
+        SELECT * FROM course WHERE SpecialCourse =2|| SpecialCourse =3
+    </select>
+    <select id="selectByAllPrice100" resultType="Course">
+        SELECT * FROM course WHERE Price <![CDATA[<=]]> 100 and Price &gt; 0
+    </select>
+    <select id="selectByAllPrice300" resultType="Course">
+        SELECT * FROM course WHERE Price <![CDATA[<=]]> 300 and Price &gt; 100
+    </select>
+    <select id="selectByAllPrice300d" resultType="Course">
+        SELECT * FROM course WHERE Price <![CDATA[>=]]> 300
+    </select>
+    <select id="selectByISBN" resultType="Course">
+        SELECT * FROM course WHERE ISBN = #{ISBN}
+    </select>
+    <select id="selectByCourseName" resultType="Course">
+        SELECT * FROM course WHERE CourseName like '%${CourseName}%'
+    </select>
+    <select id="selectByCourseISBN" resultType="Comment">
+        SELECT commentt.*,userdetail.`username`,userdetail.`img` FROM commentt,userdetail WHERE commentt.`UserISBN`=userdetail.`id` AND CourseISBN =#{CourseISBN} ORDER BY Entrytime DESC
+    </select>
+    <insert id="addcomment" parameterType="Comment">
+        INSERT INTO commentt(UserISBN,CourseISBN,Grade,Comment,Entrytime) values (#{UserISBN},#{CourseISBN},#{Grade},#{Comment},#{Entrytime})
+    </insert>
+    <select id="selectComment" resultType="Comment">
+        SELECT commentt.*,course.`CourseName`,course.`Img` FROM commentt,course WHERE course.`ISBN` IN (SELECT CourseISBN FROM commentt WHERE UserISBN=#{UserISBN}) AND course.`ISBN`=commentt.`CourseISBN` ORDER BY Entrytime DESC    </select>
+    <delete id="DelComment">
+        DELETE from commentt where CommentID=#{CommentId}
+    </delete>
+    <select id="selectGrade" resultType="Comment">
+        SELECT * FROM commentt WHERE CourseISBN=#{CourseISBN}
+    </select>
+    <select id="selectStudySpace" resultType="Course">
+        SELECT course.*,studyspace.`Entrytime` shijian FROM course,studyspace WHERE ISBN IN(SELECT CourseISBN FROM  studyspace WHERE UserISBN =#{UserISBN}) AND course.`ISBN`=studyspace.`CourseISBN` AND UserISBN =#{UserISBN} ORDER BY shijian DESC
+    </select>
+    <select id="selectStudySpaceByNameASC" resultType="Course">
+        SELECT course.*,studyspace.`Entrytime` shijian FROM course,studyspace WHERE ISBN IN(SELECT CourseISBN FROM  studyspace WHERE UserISBN =#{UserISBN}) AND course.`ISBN`=studyspace.`CourseISBN`  ORDER BY  CONVERT(CourseName USING gbk) ASC
+    </select>
+    <select id="selectStudySpaceByNameDESC" resultType="Course">
+        SELECT course.*,studyspace.`Entrytime` shijian FROM course,studyspace WHERE ISBN IN(SELECT CourseISBN FROM  studyspace WHERE UserISBN =#{UserISBN}) AND course.`ISBN`=studyspace.`CourseISBN`  ORDER BY  CONVERT(CourseName USING gbk) DESC
+    </select>
+</mapper>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.uzz.springboot.mapper.index.TeacherMapper">
+    <select id="selectTelephone" resultType="User">
+        SELECT * FROM userdetail WHERE id=#{UserISBN}
+    </select>
+    <select id="selectcreator" resultType="Course">
+        SELECT * FROM course WHERE CreatorTel =#{UserISBN} ORDER BY Entrytime DESC
+    </select>
+    <select id="selectcreatorasc" resultType="Course">
+        SELECT * FROM course WHERE CreatorTel =#{UserISBN} ORDER BY CourseName ASC
+    </select>
+    <select id="selectcreatordesc" resultType="Course">
+        SELECT * FROM course WHERE CreatorTel =#{UserISBN} ORDER BY CourseName DESC
+    </select>
+    <select id="selectAllCategory" resultType="Category">
+        SELECT * FROM coursecategory
+    </select>
+    <insert id="insertcourse" parameterType="Course">
+        INSERT INTO course(CourseName,Price,Decription,Img,CategoryId,SpecialCourse,Entrytime,CreatorName,CreatorTel)
+        VALUE(#{CourseName},#{Price},#{Decription},#{Img},#{CategoryId},#{SpecialCourse},#{Entrytime},#{CreatorName},#{CreatorTel});
+    </insert>
+    <select id="selectCreatorId" resultType="Course">
+        SELECT * FROM course WHERE CreatorTel=#{userISBN}
+    </select>
+    <insert id="insertchapter" parameterType="Chapter">
+        INSERT INTO chapter(CourseISBN,ChapterHao,chapter,kaoshitime) VALUE(#{CourseISBN},#{ChapterHao},#{chapter},#{kaoshitime})
+    </insert>
+    <select id="selectChapterHao" resultType="Chapter">
+        SELECT * FROM chapter WHERE CourseISBN=#{CourseISBN} AND ChapterHao=#{ChapterHao}
+    </select>
+    <update id="UpdateChapter" parameterType="Chapter">
+        UPDATE chapter SET chapter=#{chapter},kaoshitime=#{kaoshitime} WHERE CourseISBN=#{CourseISBN} AND ChapterHao=#{ChapterHao}
+    </update>
+    <insert id="insertsmallchapter" parameterType="Chapter">
+        INSERT INTO smallchapter(ChapterHao1,ChapterHao2,CourseISBN,SmallChapter,grade) VALUE(#{ChapterHao1},#{ChapterHao2},#{CourseISBN},#{SmallChapter},#{grade})
+    </insert>
+    <select id="selectSmallChapter" resultType="Chapter">
+        SELECT * FROM smallchapter WHERE ChapterHao1=#{ChapterHao1} AND ChapterHao2=#{ChapterHao2} AND CourseISBN=#{CourseISBN}
+    </select>
+    <update id="UpdateSmallChapter" parameterType="Chapter">
+        UPDATE smallchapter SET SmallChapter=#{SmallChapter} WHERE ChapterHao1=#{ChapterHao1} AND ChapterHao2=#{ChapterHao2} AND CourseISBN=#{CourseISBN}
+    </update>
+    <delete id="DeleteSmallChapter" parameterType="Chapter">
+        DELETE FROM smallchapter WHERE ChapterHao1=#{ChapterHao1} AND ChapterHao2=#{ChapterHao2} AND CourseISBN=#{CourseISBN}
+    </delete>
+    <delete id="DeleteChapter" parameterType="Chapter">
+        DELETE FROM chapter WHERE ChapterHao=#{ChapterHao} AND CourseISBN=#{CourseISBN}
+    </delete>
+    <update id="UpdateSmallChapterVideo1" parameterType="Chapter">
+        UPDATE smallchapter SET video1Name =#{video1Name},video1=#{video1} WHERE SmallChapterId =#{SmallChapterId} AND CourseISBN=#{CourseISBN}
+    </update>
+    <update id="UpdateSmallChapterVideo2" parameterType="Chapter">
+        UPDATE smallchapter SET video2Name =#{video2Name},video2=#{video2} WHERE SmallChapterId =#{SmallChapterId} AND CourseISBN=#{CourseISBN}
+    </update>
+    <select id="selectcreatortel" resultType="Chapter">
+        SELECT *FROM course WHERE creatortel=#{UserISBN} AND isbn=#{CourseISBN}
+    </select>
+    <update id="UpdateSmallChapterwork1" parameterType="Chapter">
+        UPDATE smallchapter SET work1Name =#{work1Name},work1=#{work1},work1time=#{work1time} WHERE SmallChapterId =#{SmallChapterId} AND CourseISBN=#{CourseISBN}
+    </update>
+    <update id="UpdateSmallChapterwork2" parameterType="Chapter">
+        UPDATE smallchapter SET work2Name =#{work2Name},work2=#{work2},work2time=#{work2time} WHERE SmallChapterId =#{SmallChapterId} AND CourseISBN=#{CourseISBN}
+    </update>
+    <select id="selectQuestion" resultType="Question">
+        SELECT questions.*,chapter.`chapter`,course.`CourseName` FROM questions,chapter,course WHERE questions.`courseisbn`=#{CourseISBN} AND questions.`chapterid`=chapter.`ChapterHao` AND questions.`courseisbn`=course.`ISBN` AND course.`ISBN`=chapter.`CourseISBN` ORDER BY chapterid
+    </select>
+    <insert id="insertQuestion" parameterType="Question">
+        INSERT INTO questions(subject,type,optiona,optionb,optionc,optiond,answer,courseisbn,chapterid) VALUE (#{subject},#{type},#{optiona},#{optionb},#{optionc},#{optiond},#{answer},#{courseisbn},#{chapterid})
+    </insert>
+    <delete id="DeleteExam" parameterType="Question">
+        DELETE FROM questions WHERE id=#{id}
+    </delete>
+    <select id="SelectQuestionById" resultType="Question">
+        SELECT * FROM questions WHERE id =#{id}
+    </select>
+    <update id="UpdateQuestion" parameterType="Question">
+        UPDATE questions SET subject=#{subject},type=#{type},optiona=#{optiona},optionb=#{optionb},optionc=#{optionc},optiond=#{optiond},answer=#{answer} WHERE id=#{id}
+    </update>
+    <update id="UpdateChapterTest" parameterType="Chapter">
+        UPDATE chapter SET test=1 WHERE ChapterId=#{ChapterId}
+    </update>
+    <select id="SelectAllExam" resultType="ExamResult">
+        SELECT a.*,b.`chapter` FROM examresult a,chapter b WHERE a.`courseisbn`=b.`CourseISBN` AND a.`chapterid`=b.`ChapterHao` AND a.CourseISBN=#{CourseISBN}
+    </select>
+    <select id="SelectAllExam1" resultType="java.util.HashMap">
+        SELECT a.*,b.`chapter` FROM examresult a,chapter b WHERE a.`courseisbn`=b.`CourseISBN` AND a.`chapterid`=b.`ChapterHao` AND a.CourseISBN=#{CourseISBN}
+    </select>
+
+    <select id="SelectAllTest" resultType="TestResult">
+        SELECT SmallChapter.*,a.work1file,a.work2file,a.grade stugrade,a.Work1Time sub1time,a.Work2Time sub2time,a.UserISBN,a.UserName,a.TestId
+        FROM SmallChapter
+        LEFT JOIN (SELECT * FROM test) a
+        ON SmallChapter.`ChapterHao2`=a.`SmallChapterId`
+        AND SmallChapter.`ChapterHao1`=a.`ChapterId`
+        AND SmallChapter.`CourseISBN`=a.`CourseISBN`
+        WHERE SmallChapter.CourseISBN=#{CourseISBN}
+    </select>
+    <update id="UpdateStugrade" parameterType="Test">
+        UPDATE test SET grade=#{grade} WHERE testid=#{testid}
+    </update>
+    <update id="UpdateExam" parameterType="Chapter">
+        UPDATE chapter SET test=1 WHERE CourseISBN=#{CourseISBN} AND ChapterHao=#{chapterid}
+    </update>
+</mapper>

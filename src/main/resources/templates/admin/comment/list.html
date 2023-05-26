@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>layuiAdmin 网站用户</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" th:href="@{/layuiadmin/layui/css/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{/layuiadmin/style/admin.css}" media="all">
+    <link id="layuicss-layer" rel="stylesheet"
+          href="http://localhost:8080/layuiadmin/layui/css/modules/layer/default/layer.css?v=3.1.1" media="all">
+</head>
+
+<body layadmin-themealias="default" style="">
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+            <div class="layui-form-item">
+                <form action="/user/search2" method="post">
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">用户名</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="username" placeholder="请输入" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                    </div>
+
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">课程名</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="CourseName" placeholder="请输入" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <button class="layui-btn layuiadmin-btn-useradmin" type="submit">
+                            <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="layui-card-body">
+            <div style="padding-bottom: 10px;">
+                <button class="layui-btn layuiadmin-btn-useradmin" data-type="add">添加</button>
+            </div>
+
+            <table id="LAY-user-manage" lay-filter="LAY-user-manage"></table>
+            <div class="layui-form layui-border-box layui-table-view" lay-filter="LAY-table-1"
+                 style=" height:502px;">
+                <div class="layui-table-box">
+                    <div class="layui-table-header">
+                        <table cellspacing="0" cellpadding="0" border="0" class="layui-table">
+                            <thead>
+                            <tr>
+                                <th data-field="0" data-unresize="true">
+                                    <div class="layui-table-cell laytable-cell-1-0 laytable-cell-checkbox">
+                                        <input type="checkbox" name="layTableCheckbox" lay-skin="primary"
+                                               lay-filter="layTableAllChoose">
+                                        <div class="layui-unselect layui-form-checkbox" lay-skin="primary"><i
+                                                class="layui-icon layui-icon-ok"></i></div>
+                                    </div>
+                                </th>
+                                <th data-field="id">
+                                    <div class="layui-table-cell laytable-cell-1-id"><span>ID</span><span
+                                            class="layui-table-sort layui-inline"><i
+                                            class="layui-edge layui-table-sort-asc"></i><i
+                                            class="layui-edge layui-table-sort-desc"></i></span></div>
+                                </th>
+                                <th data-field="username" data-minwidth="100">
+                                    <div class="layui-table-cell laytable-cell-1-username"><span>用户名22222222</span>
+                                    </div>
+                                </th>
+                                <th data-field="avatar">
+                                    <div class="layui-table-cell laytable-cell-1-avatar"><span>头像</span></div>
+                                </th>
+                                <th data-field="phone">
+                                    <div class="layui-table-cell laytable-cell-1-phone"><span>课程名称</span></div>
+                                </th>
+                                <th data-field="email">
+                                    <div class="layui-table-cell laytable-cell-1-email"><span>评论内容</span></div>
+                                </th>
+                                <th data-field="avatar">
+                                    <div class="layui-table-cell laytable-cell-1-avatar"><span>星级</span></div>
+                                </th>
+                                <th data-field="jointime">
+                                    <div class="layui-table-cell laytable-cell-1-jointime">
+                                        <span>加入时间</span><span class="layui-table-sort layui-inline"><i
+                                            class="layui-edge layui-table-sort-asc"></i><i
+                                            class="layui-edge layui-table-sort-desc"></i></span>
+                                    </div>
+                                </th>
+                                <th data-field="9">
+                                    <div class="layui-table-cell laytable-cell-1-9" align="center">
+                                        <span>操作</span>
+                                    </div>
+                                </th>
+<!--                                <th class="layui-table-patch">-->
+<!--                                    <div class="layui-table-cell" style="width: 17px;"></div>-->
+<!--                                </th>-->
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="layui-table-body layui-table-main" style="height: 422px;">
+                        <table cellspacing="0" cellpadding="0" border="0" class="layui-table">
+                            <tbody>
+                            <tr th:each="list : ${list}">
+                                <td data-field="0">
+                                    <div class="layui-table-cell laytable-cell-1-0 laytable-cell-checkbox">
+                                        <input type="checkbox" name="layTableCheckbox" lay-skin="primary">
+                                        <div class="layui-unselect layui-form-checkbox" lay-skin="primary"><i
+                                                class="layui-icon layui-icon-ok"></i></div>
+                                    </div>
+                                </td>
+                                <td data-field="id">
+                                    <div class="layui-table-cell laytable-cell-1-id" th:text="${list.CommentId}">001
+                                    </div>
+                                </td>
+
+<!--                                <td data-field="jointime">-->
+<!--                                    <div class="layui-table-cell laytable-cell-1-jointime"-->
+<!--                                         th:text="${list.CommentID}">data</div>-->
+<!--                                </td>-->
+                                <td data-field="jointime">
+                                    <div class="layui-table-cell laytable-cell-1-jointime"
+                                         th:text="${list.username}">data</div>
+                                </td>
+
+
+                                <td data-field="avatar" th:data-content="'../../../'+${list.img}">
+                                    <div class="layui-table-cell laytable-cell-1-avatar"> <img
+                                            style="display: inline-block; width: 45%; height: 100%;"
+                                            th:src="@{${list.img}}">
+                                    </div>
+                                </td>
+
+
+
+
+
+
+
+
+
+                                <td data-field="jointime">
+                                    <div class="layui-table-cell laytable-cell-1-jointime"
+                                         th:text="${list.CourseName}">data</div>
+                                </td>
+                                <td data-field="email">
+                                    <div class="layui-table-cell laytable-cell-1-email" th:text="${list.Comment}">
+                                        email</div>
+                                </td>
+
+
+                                <td data-field="avatar" >
+                                    <div class="layui-table-cell laytable-cell-1-avatar"    th:text="${list.Grade}">
+
+
+                                    </div>
+                                </td>
+
+
+                                <td data-field="username" data-minwidth="100">
+                                    <div class="layui-table-cell laytable-cell-1-username"
+                                         th:text="${list.Entrytime}">用户-1</div>
+                                </td>
+                                <td data-field="9" align="center" data-off="true">
+                                    <div class="layui-table-cell laytable-cell-1-9">
+                                        <a class="layui-btn layui-btn-danger layui-btn-xs layuiadmin-btn-useradmin"
+                                           data-type="del" th:onclick="'javascript:del('+${list.CommentId}+');'">
+                                            <i class="layui-icon layui-icon-delete"></i>删除
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="layui-table-page">
+                    <div id="layui-table-page1">
+                        <form action="/admin/comment/list" method="get" th:switch="${sw}">
+                            <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-1"
+                                 th:case="1">
+                                <a th:href="@{'/admin/comment/list?pageNum='+${pageNum-1}+'&num='+${pagesize}}"
+                                   class="layui-laypage-prev" data-page="0"><i class="layui-icon"></i></a><a
+                                    th:href="@{'/admin/comment/list?pageNum=1&num='+${pagesize}}" data-page="2">1</a><a
+                                    th:href="@{'/admin/comment/list?pageNum=2&num='+${pagesize}}" data-page="2">2</a><a
+                                    th:href="@{'/admin/comment/list?pageNum=3&num='+${pagesize}}" data-page="3">3</a><a
+                                    th:href="@{'/admin/comment/list?pageNum=4&num='+${pagesize}}"
+                                    class="layui-laypage-last" title="尾页" data-page="4">4</a><a
+                                    th:href="@{'/admin/comment/list?pageNum='+${pageNum+1}+'&num='+${pagesize}}"
+                                    class="layui-laypage-next" data-page="2"><i class="layui-icon"></i></a><span
+                                    class="layui-laypage-skip">第<input type="text" min="1" th:value="${pageNum}"
+                                                                       name="pageNum" class="layui-input">页<button type="submit"
+                                                                                                                   class="layui-laypage-btn">确定</button></span><span
+                                    class="layui-laypage-count" th:text="'共'+${totalnum}+'条'">共 100
+                                        条</span><span class="layui-laypage-limits"><select lay-ignore="" name="num">
+                                            <option value="5">请选择--默认5条/页</option>
+                                            <option value="2">2 条/页</option>
+                                            <option value="3">3 条/页</option>
+                                            <option value="5">5 条/页</option>
+                                            <option value="7">7 条/页</option>
+                                            <option value="10">10 条/页</option>
+                                            <option value="15">15 条/页</option>
+                                            <option value="20">20 条/页</option>
+                                            <option value="25">25 条/页</option>
+                                            <option value="30">30 条/页</option>
+                                        </select></span>
+                            </div>
+                            <div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-2"
+                                 th:case="2">
+                                <span class="layui-laypage-count">显示全部</span>
+                                <span class="layui-laypage-count" th:text="'共'+${totalnum}+'条'">共10条</span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <style>
+                        .laytable-cell-1-0 {
+                            width: 48px;
+                        }
+
+                        .laytable-cell-1-id {
+                            width: 90px;
+                        }
+
+                        .laytable-cell-1-username {
+                            width: 190px;
+                        }
+
+                        .laytable-cell-1-avatar {
+                            width: 100px;
+                        }
+
+                        .laytable-cell-1-phone {
+                            width: 190px;
+                        }
+
+                        .laytable-cell-1-email {
+                            width: 190px;
+                        }
+
+                        .laytable-cell-1-sex {
+                            width: 80px;
+                        }
+
+                        .laytable-cell-1-ip {
+                            width: 190px;
+                        }
+
+                        .laytable-cell-1-jointime {
+                            width: 190px;
+                        }
+
+                        .laytable-cell-1-9 {
+                            width: 150px;
+                        }
+                    </style>
+            </div>
+            <script type="text/html" id="imgTpl">
+                <img style="display: inline-block; width: 50%; height: 100%;" src= {{ d.avatar }}>
+            </script>
+        </div>
+    </div>
+</div>
+<script th:src="@{/layuiadmin/layui/layui.js}"></script>
+<script>
+        function del(CommentId) {
+            layer.confirm('确定要删除吗？', {
+                btn: ['确定', '取消'] //按钮
+            }, function () {
+                location.href = '/admin/deleteById2?CommentId=' + CommentId;
+            });
+        }
+    </script>
+
+<script th:inline="javascript">
+        layui.config({
+            base: '../../../layuiadmin/' //静态资源所在路径
+        }).extend({
+            index: 'lib/index' //主入口模块
+        }).use(['index', 'table'], function () {
+            var $ = layui.$
+                , form = layui.form
+                , table = layui.table;
+            var ms = [[${ ms }]];
+            var icon = [[${ icon }]];
+            var ti = [[${ ti }]];
+            layer.msg(ms, {
+                offset: '25px'
+                , icon: icon
+                , time: 2000
+            });
+        });
+    </script>
+
+<script th:inline="javascript">
+        layui.config({
+            base: '../../../layuiadmin/' //静态资源所在路径
+        }).extend({
+            index: 'lib/index' //主入口模块
+        }).use(['index', 'table'], function () {
+            var $ = layui.$
+                , form = layui.form
+                , table = layui.table;
+            //事件
+            var active = {
+                add: function () {
+                    layer.open({
+                        type: 2
+                        , title: '添加用户'
+                        , content: '/admin/user/addUser'
+                        , maxmin: true
+                        , area: ['470px', '495px']
+                        , btn: ['取消']
+                    });
+                }
+            };
+            $('.layui-btn.layuiadmin-btn-useradmin').on('click', function () {
+                var type = $(this).data('type');
+                active[type] ? active[type].call(this) : '';
+            });
+        });
+    </script>
+
+
+<script>
+        function update(id) {
+            layer.open({
+                type: 2
+                , title: '修改用户'
+                , content: '/admin/user/updateUser?id=' + id
+                , maxmin: true
+                , area: ['500px', '540px']
+                , btn: ['取消']
+            });
+        };
+        $('.layui-btn.layuiadmin-btn-useradmin').on('click', function () {
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+    </script>
+</body>
+
+</html>

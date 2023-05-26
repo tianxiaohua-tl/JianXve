@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
+<!--<head>-->
+<!--    <meta charset="utf-8" />-->
+<!--    <title>简学教育</title>-->
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta content="width=device-width, initial-scale=1.0" name="viewport" />-->
+<!--    <meta http-equiv="Content-type" content="text/html; charset=utf-8">-->
+<!--    <meta content="" name="description" />-->
+<!--    <meta content="" name="author" />-->
+<!--    <link-->
+<!--        href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700&amp;subset=all'-->
+<!--        rel='stylesheet' type='text/css'>-->
+<!--    <link href="../assets/plugins/socicon/socicon.css" rel="stylesheet" type="text/css" />-->
+<!--    <link href="../assets/plugins/bootstrap-social/bootstrap-social.css" rel="stylesheet" type="text/css" />-->
+<!--    <link href="../assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />-->
+<!--    <link href="../assets/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />-->
+<!--    <link href="../assets/plugins/animate/animate.min.css" rel="stylesheet" type="text/css" />-->
+<!--    <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />-->
+<!--    <link href="../assets/plugins/cubeportfolio/css/cubeportfolio.min.css" rel="stylesheet" type="text/css" />-->
+<!--    <link href="../assets/plugins/owl-carousel/owl.carousel.css" rel="stylesheet" type="text/css" />-->
+<!--    <link href="../assets/plugins/owl-carousel/owl.theme.css" rel="stylesheet" type="text/css" />-->
+<!--    <link href="../assets/plugins/owl-carousel/owl.transitions.css" rel="stylesheet" type="text/css" />-->
+<!--    <link href="../assets/plugins/fancybox/jquery.fancybox.css" rel="stylesheet" type="text/css" />-->
+<!--    <link href="../assets/plugins/slider-for-bootstrap/css/slider.css" rel="stylesheet" type="text/css" />-->
+<!--    <link href="../assets/base/css/plugins.css" rel="stylesheet" type="text/css" />-->
+<!--    <link href="../assets/base/css/components.css" id="style_components" rel="stylesheet" type="text/css" />-->
+<!--    <link href="../assets/base/css/themes/default.css" rel="stylesheet" id="style_theme" type="text/css" />-->
+<!--    <link href="../assets/base/css/custom.css" rel="stylesheet" type="text/css" />-->
+<!--    <link rel="shortcut icon" href="favicon.ico" />-->
+<!--</head>-->
+<head th:replace="index/header :: css"></head>
+<body class="c-layout-header-fixed c-layout-header-mobile-fixed c-layout-header-topbar c-layout-header-topbar-collapse">
+    <header th:replace="index/header :: header"></header>
+    <div th:replace="index/header :: forget"></div>
+    <div th:replace="index/header :: register"></div>
+    <div th:replace="index/header :: login"></div>
+    <nav th:replace="index/header :: style"></nav>
+    <div class="c-layout-page">
+        <div class="c-layout-breadcrumbs-1 c-subtitle c-fonts-uppercase c-fonts-bold c-bordered c-bordered-both">
+            <div class="container">
+                <div class="c-page-title c-pull-left">
+                    <a th:href="@{/checkout}">
+                        <h3 class="c-font-uppercase c-font-sbold">订单详情</h3>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="c-content-box c-size-lg c-overflow-hide c-bg-white">
+            <div class="container">
+                <div class="c-shop-order-complete-1 c-content-bar-1 c-align-left c-bordered c-theme-border c-shadow">
+                    <div class="c-content-title-1">
+                        <h3 class="c-center c-font-uppercase c-font-bold">付款完毕</h3>
+                        <div class="c-line-center c-theme-bg"></div>
+                    </div>
+                    <div class="c-theme-bg">
+                        <p class="c-message c-center c-font-white c-font-20 c-font-sbold">
+                            <i class="fa fa-check"></i>谢谢您的光临，请在"学习空间"内进行学习课程
+                        </p>
+                    </div>
+                    <div class="row c-order-summary c-center">
+                        <ul class="c-list-inline list-inline">
+                            <li>
+                                <h3>付款时间</h3>
+                                <p th:text="${order.Entrytime}"></p>
+                            </li>
+                            <li>
+                                <h3>总金额</h3>
+                                <p th:text="@{'$'+${lastsum}}"></p>
+                            </li>
+                            <li>
+                                <h3>付款方式</h3>
+                                <p>银行卡支付</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="c-bank-details c-margin-t-30 c-margin-b-30">
+                        <p class="c-margin-b-20">将您的款项直接存入我们的银行帐户。请使用您的订单ID作为付款参考。你的订单要到我们帐户结清后才可学习。</p>
+                        <h3 class="c-margin-t-40 c-margin-b-20 c-font-uppercase c-font-22 c-font-bold">银行卡详情</h3>
+                        <h3 class="c-border-bottom">账户名称 : &nbsp;
+                            <span class="c-font-thin">田某某</span>
+                        </h3>
+                        <ul class="c-list-inline list-inline">
+                            <li>
+                                <h3>银行卡号</h3>
+                                <p>123456789</p>
+                            </li>
+                            <li>
+                                <h3>银行名称</h3>
+                                <p>工商银行</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="c-order-details">
+                        <div class="c-border-bottom hidden-sm hidden-xs">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h3 class="c-font-uppercase c-font-16 c-font-grey-2 c-font-bold">课程</h3>
+                                </div>
+                                <div class="col-md-5">
+                                    <h3 class="c-font-uppercase c-font-16 c-font-grey-2 c-font-bold">相关信息</h3>
+                                </div>
+                                <div class="col-md-2">
+                                    <h3 class="c-font-uppercase c-font-16 c-font-grey-2 c-font-bold">价格</h3>
+                                </div>
+                                <div class="col-md-2">
+                                    <h3 class="c-font-uppercase c-font-16 c-font-grey-2 c-font-bold">订单号</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="c-border-bottom c-row-item" th:each="list : ${cartlist1}">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-12 c-image">
+                                    <div class="c-content-overlay">
+                                        <div class="c-overlay-wrapper">
+                                            <div class="c-overlay-content">
+                                                <a th:href="@{'detail?ISBN='+${list.ISBN}}"
+                                                    class="btn btn-md c-btn-grey-1 c-btn-uppercase c-btn-bold c-btn-border-1x c-btn-square">查看详情</a>
+                                            </div>
+                                        </div>
+                                        <div class="c-bg-img-top-center c-overlay-object" data-height="height">
+                                            <img width="100%" class="img-responsive" th:src="@{${list.Img}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 col-sm-8">
+                                    <ul class="c-list list-unstyled">
+                                        <li class="c-margin-b-25">
+                                            <a th:href="@{'detail?ISBN='+${list.ISBN}}"
+                                                class="c-font-bold c-font-22 c-theme-link"
+                                                th:text="${list.CourseName}"></a>
+                                        </li>
+                                        <li class="c-margin-b-10" th:text="${list.Decription}"></li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-2 col-sm-2">
+                                    <p class="c-font-sbold c-font-uppercase c-font-18" th:text="@{'$'+${list.Price}}">
+                                        $20.00</p>
+                                </div>
+                                <div class="col-md-2 col-sm-2">
+                                    <p class="c-font-sbold c-font-18" th:text="${order.orderid}"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="c-row-item c-row-total c-right">
+                            <ul class="c-list list-unstyled">
+                                <li>
+                                    <h3 class="c-font-regular c-font-22">共计: &nbsp;
+                                        <span class="c-font-dark c-font-bold c-font-22"
+                                            th:text="@{'$'+${lastsum}+'.00'}"></span>
+                                    </h3>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="c-customer-details row" data-auto-height="true">
+                        <div class="col-md-6 col-sm-6 c-margin-t-20">
+                            <div data-height="height">
+                                <h3 class=" c-margin-b-20 c-font-uppercase c-font-22 c-font-bold">用户详细信息</h3>
+                                <ul class="list-unstyled">
+                                    <li th:text="@{'姓名:'+${user.username}}"></li>
+                                    <li th:text="@{'电话:'+${user.telephone}}"></li>
+                                    <li>邮箱:
+                                        <a href="https://mail.qq.com/" class="c-theme-color"
+                                            th:text="${user.email}"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 c-margin-t-20">
+                            <div data-height="height">
+                                <h3 class=" c-margin-b-20 c-font-uppercase c-font-22 c-font-bold">订单备注：</h3>
+                                <ul class="list-unstyled">
+                                    <li th:text="${order.note}"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a name="footer"></a>
+    <div class="c-layout-go2top">
+        <i class="icon-arrow-up"></i>
+    </div>
+<!--    <script src="../assets/plugins/jquery.min.js" type="text/javascript"></script>-->
+<!--    <script src="../assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>-->
+<!--    <script src="../assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>-->
+<!--    <script src="../assets/plugins/jquery.easing.min.js" type="text/javascript"></script>-->
+<!--    <script src="../assets/plugins/reveal-animate/wow.js" type="text/javascript"></script>-->
+<!--    <script src="../assets/base/js/scripts/reveal-animate/reveal-animate.js" type="text/javascript"></script>-->
+<!--    <script src="../assets/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js" type="text/javascript"></script>-->
+<!--    <script src="../assets/plugins/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>-->
+<!--    <script src="../assets/plugins/counterup/jquery.counterup.min.js" type="text/javascript"></script>-->
+<!--    <script src="../assets/plugins/counterup/jquery.waypoints.min.js" type="text/javascript"></script>-->
+<!--    <script src="../assets/plugins/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>-->
+<!--    <script src="../assets/plugins/slider-for-bootstrap/js/bootstrap-slider.js" type="text/javascript"></script>-->
+<!--    <script src="../assets/base/js/components.js" type="text/javascript"></script>-->
+<!--    <script src="../assets/base/js/components-shop.js" type="text/javascript"></script>-->
+<!--    <script src="../assets/base/js/app.js" type="text/javascript"></script>-->
+<!--    <script>-->
+<!--        $(document).ready(function () {-->
+<!--            App.init();-->
+<!--        });-->
+<!--    </script>-->
+    <script th:src="@{/assets/plugins/jquery.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/jquery-migrate.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/bootstrap/js/bootstrap.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/jquery.easing.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/reveal-animate/wow.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/scripts/reveal-animate/reveal-animate.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/jquery.themepunch.tools.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/jquery.themepunch.revolution.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/extensions/revolution.extension.slideanims.min.js}"
+            type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/extensions/revolution.extension.layeranimation.min.js}"
+            type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/extensions/revolution.extension.navigation.min.js}"
+            type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/revo-slider/js/extensions/revolution.extension.video.min.js}"
+            type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/owl-carousel/owl.carousel.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/counterup/jquery.waypoints.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/counterup/jquery.counterup.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/fancybox/jquery.fancybox.pack.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/slider-for-bootstrap/js/bootstrap-slider.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/components.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/components-shop.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/app.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/scripts/revo-slider/slider-11.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/isotope/isotope.pkgd.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/isotope/imagesloaded.pkgd.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/isotope/packery-mode.pkgd.min.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/ilightbox/js/jquery.requestAnimationFrame.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/ilightbox/js/jquery.mousewheel.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/plugins/ilightbox/js/ilightbox.packed.js}" type="text/javascript"></script>
+    <script th:src="@{/assets/base/js/scripts/pages/isotope-gallery.js}" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var menuYloc = $("#rightmenu").offset().top; //此ID为随着屏幕滚动div的ID
+            $(window).scroll(function () {
+                var offsetTop = -90 + $(window).scrollTop() + "px";
+
+                $("#rightmenu").animate({ top: offsetTop }, { duration: 600, queue: false }); //此ID为随着屏幕滚动div的ID
+            });
+        });
+    </script>
+    <script th:inline="javascript">
+        var aa = [[${ ms }]];
+        if (aa != null) {
+            alert(aa);
+        }
+    </script>
+    <script type="text/javascript">
+        function sendMessage() {
+            var emailAd = document.getElementById("emailAd");
+            if (emailAd.value == "") {
+                alert("邮箱不能为空");
+                return;
+            }
+            var email_reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+            if (!email_reg.test(emailAd.value)) {
+                alert("请输入正确的邮箱地址");
+                return;
+            }
+            $.get("/getCode", { "email": emailAd.value }, function (data) {
+                if (data.success) {
+                    var wait = 60;
+                    var button = document.getElementById("sendCode");
+                    (function time(o) {
+                        if (wait == 0) {
+                            o.disabled = false;
+                            o.innerHTML = "免费获取验证码";
+                            wait = 60;
+                        } else {
+                            o.disabled = true;
+                            o.innerHTML = wait + "秒后可以重新发送";
+                            wait--;
+                            setTimeout(function () {
+                                time(o)
+                            }, 1000)
+                        }
+                    })(button);
+                }
+            });
+        }
+
+        function tologin() {
+            var email = document.getElementById("email");
+            var code = document.getElementById("code");
+            if (code.value == "") {
+                alert("验证码不能为空");
+                return;
+            }
+            $.get("/tologin", { "email": email.value, "code": code.value }, function (data) {
+                if (data) {
+                    window.location.href = "/admin";
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

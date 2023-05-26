@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.uzz.springboot.mapper.admin.UserMapper1">
+    <select id="selectByUserTel" resultType="User">
+        SELECT * FROM userdetail WHERE telephone=#{telephone}
+    </select>
+    <select id="selectByUsername" resultType="User">
+        SELECT * FROM userdetail WHERE username=#{username}
+    </select>
+    <insert id="insertUser" parameterType="User">
+        INSERT INTO userdetail(username,email,telephone,password,data,role) values (#{nickname},#{email},#{telephone},#{password},#{time},#{role})
+    </insert>
+    <select id="selectAll" resultType="User">
+        SELECT * FROM userdetail
+    </select>
+    <delete id="deleteByid">
+        DELETE from userdetail where id=#{id}
+    </delete>
+    <select id="selectByUserId" resultType="User">
+        SELECT * FROM userdetail where id=#{id}
+    </select>
+    <select id="selectByname" resultType="User">
+        SELECT * FROM userdetail where username like '%${username}%'
+    </select>
+    <select id="selectBytel" resultType="User">
+        SELECT * FROM userdetail where telephone=#{telephone}
+    </select>
+    <select id="selectByemail" resultType="User">
+        SELECT * FROM userdetail where email=#{email}
+    </select>
+    <select id="selectBysex" resultType="User">
+        SELECT * FROM userdetail where sex=#{sex}
+    </select>
+    <insert id="insertUser2" parameterType="User">
+        INSERT INTO userdetail(username,email,telephone,password,data,sex,img,role) values (#{nickname},#{email},#{telephone},#{password},#{time},#{sex},#{filename},#{role})
+    </insert>
+    <insert id="insertUser3" parameterType="User">
+        INSERT INTO userdetail(username,email,telephone,password,data,sex,role) values (#{nickname},#{email},#{telephone},#{password},#{time},#{sex},#{role})
+    </insert>
+    <select id="selectByUserId2" resultType="User">
+        SELECT * FROM userdetail where id=#{id}
+    </select>
+    <update id="updateUser" parameterType="User">
+        UPDATE userdetail set username=#{username},email=#{email},password='123456',data=#{time},sex=#{sex},img=#{filename}
+        WHERE id=#{id}
+    </update>
+    <update id="updateUser2" parameterType="User">
+        UPDATE userdetail set username=#{username},email=#{email},data=#{time},sex=#{sex},img=#{filename}
+        WHERE id=#{id}
+    </update>
+    <update id="updateUser3" parameterType="User">
+        UPDATE userdetail set password=#{password}
+        WHERE id=#{id}
+    </update>
+</mapper>

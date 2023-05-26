@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.uzz.springboot.mapper.index.CartMapper">
+    <insert id="addCart" parameterType="Cart">
+        INSERT INTO cart(UserISBN,CourseISBN,Entrytime) values (#{UserISBN},#{CourseISBN},#{Entrytime})
+    </insert>
+    <select id="selectByUserISBN" resultType="Course">
+        SELECT course.*,cart.`Entrytime` shijian FROM course,cart WHERE ISBN IN (SELECT CourseISBN FROM cart WHERE UserISBN=#{UserISBN}) AND course.`ISBN`=cart.`CourseISBN` ORDER BY id DESC LIMIT 3
+    </select>
+    <insert id="addWish" parameterType="Wish">
+        INSERT INTO wish(UserISBN,CourseISBN,Entrytime) values (#{UserISBN},#{CourseISBN},#{Entrytime})
+    </insert>
+    <select id="selectByUserISBN1" resultType="Course">
+        SELECT course.*,wish.`Entrytime` shijian FROM course,wish WHERE ISBN IN (SELECT CourseISBN FROM wish WHERE UserISBN=#{UserISBN}) AND course.`ISBN`=wish.`CourseISBN` ORDER BY id DESC
+    </select>
+    <select id="selectByUserISBN2" resultType="Course">
+        SELECT course.*,cart.`Entrytime` shijian FROM course,cart WHERE ISBN IN (SELECT CourseISBN FROM cart WHERE UserISBN=#{UserISBN}) AND course.`ISBN`=cart.`CourseISBN` ORDER BY id DESC
+    </select>
+    <select id="selectforwishid" resultType="Wish">
+        SELECT * FROM wish WHERE UserISBN=#{UserISBN} and CourseISBN=#{CourseISBN}
+    </select>
+    <delete id="deletebywishid">
+        DELETE from wish where id=#{id}
+    </delete>
+    <select id="selectforcartid" resultType="Cart">
+        SELECT * FROM cart WHERE UserISBN=#{UserISBN} and CourseISBN=#{CourseISBN}
+    </select>
+    <delete id="deletebycartid">
+        DELETE from cart where id=#{id}
+    </delete>
+    <select id="selectByUCWISBN" resultType="Wish">
+        SELECT * FROM wish WHERE UserISBN=#{UserISBN} and CourseISBN=#{CourseISBN}
+    </select>
+    <select id="selectByUCCISBN" resultType="Cart">
+        SELECT * FROM cart WHERE UserISBN=#{UserISBN} and CourseISBN=#{CourseISBN}
+    </select>
+
+
+
+</mapper>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.uzz.springboot.mapper.admin.CourseMapper1">
+
+   <select id="selectByCourseISBN" resultType="Course">
+    SELECT * FROM course WHERE ISBN=#{ISBN}
+   </select>
+    <select id="selectByCourseNameadd" resultType="Course">
+       SELECT * FROM course WHERE CourseName=#{CourseName}
+   </select>
+    <select id="selectAll" resultType="Course">
+        SELECT * FROM course
+    </select>
+    <delete id="deleteByISBN">
+        DELETE from course where ISBN=#{ISBN}
+    </delete>
+    <select id="selectByISBN" resultType="Course">
+        SELECT * FROM course where ISBN=#{ISBN}
+    </select>
+    <select id="selectByCourseName" resultType="Course">
+        SELECT * FROM course where CourseName like '%${CourseName}%'
+    </select>
+    <select id="selectByCreatorName" resultType="Course">
+        SELECT * FROM course where CreatorName=#{tCreatorName}
+    </select>
+    <insert id="insertCourse2" parameterType="Course">
+        INSERT INTO course(ISBN,CourseName,CreatorName,Decription,Entrytime) values (#{ISBN},#{CourseName},#{CreatorName},#{Decription},#{time})
+    </insert>
+    <insert id="insertCourse3" parameterType="Course">
+        INSERT INTO course(ISBN,CourseName,CreatorName,Decription,Entrytime) values (#{ISBN},#{CourseName},#{CreatorName},#{Decription},#{time})
+    </insert>
+    <select id="selectByISBN2" resultType="Course">
+        SELECT * FROM course where ISBN=#{ISBN}
+    </select>
+    <update id="updateCourse2" parameterType="Course">
+        UPDATE course set CourseName=#{CourseName},CreatorName=#{CreatorName},Entrytime=#{time},Decription=#{Decription},img=#{filename}
+        WHERE ISBN=#{ISBN}
+    </update>
+
+
+
+    <select id="selectByCourse12" resultType="Course">
+        SELECT * FROM course where CourseName like '%${CourseName}%' and  CreatorName=#{CreatorName}
+    </select>
+
+
+
+
+
+</mapper>

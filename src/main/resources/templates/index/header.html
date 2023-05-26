@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<header th:fragment="header"
+        class="c-layout-header c-layout-header-4 c-bordered c-layout-header-default-mobile c-header-transparent-dark"
+        data-minimize-offset="80">
+    <div class="c-navbar">
+        <div class="container">
+            <div class="c-navbar-wrapper clearfix">
+                <div class="c-brand c-pull-left">
+                    <a th:href="@{index}" class="c-logo">
+                        <strong><h3>简&emsp;学</h3></strong>
+                    </a>
+                    <button class="c-hor-nav-toggler" type="button" data-target=".c-mega-menu">
+                        <span class="c-line"></span>
+                        <span class="c-line"></span>
+                        <span class="c-line"></span>
+                    </button>
+                    <button class="c-topbar-toggler" type="button">
+                        <i class="fa fa-ellipsis-v"></i>
+                    </button>
+                    <button class="c-search-toggler" type="button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                    <button class="c-cart-toggler" type="button" >
+                        <i class="icon-handbag"></i>
+                        <span class="c-cart-number c-theme-bg" th:if="${islogin==1}" th:text="${cartnum}">2</span>
+                    </button>
+                </div>
+                <form class="c-quick-search" action="/dosearch" method="post">
+                    <input type="text" name="CourseName" placeholder="搜索课程..." value="" class="form-control"
+                           autocomplete="off">
+                    <span class="c-theme-link">&times;</span>
+                </form>
+                <nav
+                        class="c-mega-menu c-pull-right c-mega-menu-dark c-mega-menu-dark-mobile c-fonts-uppercase c-fonts-bold">
+                    <ul class="nav navbar-nav c-theme-nav">
+                        <li>
+                            <a th:href="@{/AllCourse}" class="c-link dropdown-toggle">全部课程
+                                <span class="c-arrow c-toggler"></span>
+                            </a>
+                        </li>
+                        <li class="c-menu-type-classic" th:if="${islogin}==1">
+                            <a href="javascript:;" class="c-link dropdown-toggle">我的菜单
+                                <span class="c-arrow c-toggler"></span>
+                            </a>
+                            <ul class="dropdown-menu c-menu-type-classic c-pull-left">
+                                <li class="dropdown-submenu">
+                                    <a th:href="@{/wish}">愿望清单
+                                        <span class="c-arrow c-toggler"></span>
+                                    </a>
+                                </li>
+                                <li class="dropdown-submenu">
+                                    <a th:href="@{/studyspace}">学习空间
+                                        <span class="c-arrow c-toggler"></span>
+                                    </a>
+                                </li>
+                                <li class="dropdown-submenu">
+                                    <a th:href="@{/cart}">购物车
+                                        <span class="c-arrow c-toggler"></span>
+                                    </a>
+                                </li>
+                                <li class="dropdown-submenu">
+                                    <a th:href="@{/orderhistory}">订单历史
+                                        <span class="c-arrow c-toggler"></span>
+                                    </a>
+                                </li>
+                                <li class="dropdown-submenu">
+                                    <a th:href="@{/comment}">我的评论
+                                        <span class="c-arrow c-toggler"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li th:if="${islogin}==1">
+                            <a th:href="@{/createcourse}" class="c-link dropdown-toggle">我教的课
+                                <span class="c-arrow c-toggler"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/problem}" class="c-link dropdown-toggle">常见问题
+                                <span class="c-arrow c-toggler"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/about}" class="c-link dropdown-toggle">关于我们
+                                <span class="c-arrow c-toggler"></span>
+                            </a>
+                        </li>
+                        <li class="c-search-toggler-wrapper">
+                            <a href="#" class="c-btn-icon c-search-toggler">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </li>
+                        <li class="c-cart-toggler-wrapper">
+                            <a href="#" class="c-btn-icon c-cart-toggler" th:if="${islogin==1}">
+                                <i class="icon-handbag c-cart-icon"></i>
+                                <span class="c-cart-number c-theme-bg" th:text="${cartnum}"></span>
+                            </a>
+                            <a class="c-btn-icon c-cart-toggler" th:if="${islogin==0}">
+                                <i class="icon-handbag c-cart-icon"></i>
+                            </a>
+                        </li>
+                        <li th:if="${islogin}==0">
+                            <a href="javascript:;" data-toggle="modal" data-target="#login-form"
+                               class="c-btn-border-opacity-04 c-btn btn-no-focus c-btn-header btn btn-sm c-btn-border-1x c-btn-dark c-btn-circle c-btn-uppercase c-btn-sbold">
+                                <i class="icon-user"></i>登陆</a>
+                        </li>
+                        <li th:if="${islogin}==1">
+                            <a th:href="@{/studyspace}"class="c-btn-border-opacity-04 c-btn btn-no-focus c-btn-header btn btn-sm c-btn-border-1x c-btn-dark c-btn-circle c-btn-uppercase c-btn-sbold">
+                                学习空间</a>
+                        </li>
+                        <li th:if="${islogin}==1">
+                            <a th:href="@{/logout}"
+                               class="c-btn btn-no-focus c-btn-header btn btn-sm">
+                                退出登陆</a>
+                        </li>
+                        <li class="c-quick-sidebar-toggler-wrapper">
+                            <a href="#" class="c-quick-sidebar-toggler">
+                                <span class="c-line"></span>
+                                <span class="c-line"></span>
+                                <span class="c-line"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="c-cart-menu" th:if="${islogin==1&&cartnum!=0}">
+                <div class="c-cart-menu-title">
+                    <p class="c-cart-menu-float-l c-font-sbold" th:text="@{${cartnum}+'门课程共计'}">共计</p>
+                    <p class="c-cart-menu-float-r c-theme-font c-font-sbold" th:text="@{'$'+${cartsum}}"></p>
+                </div>
+                <ul class="c-cart-menu-items">
+                    <li th:each="list : ${cartlist}">
+                        <div class="c-cart-menu-close">
+                            <a th:href="@{'/cartout?ISBN='+${list.ISBN}}" class="c-theme-link">×</a>
+                        </div>
+                        <img th:src="${list.Img}" />
+                        <div class="c-cart-menu-content">
+                            <p>
+                                <span class="c-item-price c-theme-font" th:text="@{'$'+${list.Price}}">$30</span>
+                            </p>
+                            <a th:href="@{'detail?ISBN='+${list.ISBN}}" class="c-item-name c-font-sbold" th:text="${list.CourseName}"></a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="c-cart-menu-footer">
+                    <a th:href="@{/cart}"
+                       class="btn btn-md c-btn c-btn-square c-btn-grey-3 c-font-white c-font-bold c-center c-font-uppercase">查看更多</a>
+                    <a th:href="@{/check}"
+                       class="btn btn-md c-btn c-btn-square c-theme-btn c-font-white c-font-bold c-center c-font-uppercase">去支付</a>
+                </div>
+            </div>
+            <div class="c-cart-menu" th:if="${islogin==1&&cartnum==0}">
+                <div class="c-cart-menu-footer">
+                    <a th:href="@{/AllCourse}"
+                       class="btn btn-md c-btn c-btn-square c-theme-btn c-font-white c-font-bold c-center c-font-uppercase">挑选课程</a>
+                </div>
+            </div>
+            <div class="c-cart-menu" th:if="${islogin==0}">
+                <ul class="c-cart-menu-items">
+                    <li>
+                        <div class="c-cart-menu-content">
+                            <h class="c-item-name c-font-sbold"><b>请登录！</b></h>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+<footer th:fragment="footer" class="c-layout-footer c-layout-footer-7">
+    <div class="container">
+        <div class="c-prefooter">
+            <div class="c-foot">
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="c-content-title-1 c-title-md">
+                            <h3 class="c-title c-font-uppercase c-font-bold">关于
+                                <span class="c-theme-font">简学</span>
+                            </h3>
+                            <div class="c-line-left hide"></div>
+                        </div>
+                        <p class="c-text c-font-16 c-font-regular">学习会使你获得许多你成长所必需的“能源”，学习会给你带来更多的希望，学习会让你拥有更多的“资本”。
+                            但同时，学习也使你付出许多，其中包括你的努力、你的钻研、你的时光、你的心血和汗水等。</p>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="c-content-title-1 c-title-md">
+                            <h3 class="c-title c-font-uppercase c-font-bold">常见问题</h3>
+                            <div class="c-line-left hide"></div>
+                        </div>
+                        <div class="c-line-left hide"></div>
+                        <form action="#">
+                            <div class="input-group input-group-lg c-square">
+                                <input type="text" class="c-input form-control c-square c-theme"
+                                       placeholder=" " />
+                                <span class="input-group-btn">
+                                        <button
+                                                class="btn c-theme-btn c-theme-border c-btn-square c-btn-uppercase c-font-16"
+                                                type="button"><a th:href="@{/problem}" style="color:white">查找</a></button>
+                                    </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="c-line"></div>
+            <div class="c-body">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <ul class="c-links c-theme-ul">
+                            <li>
+                                <a th:href="@{/about}">关于我们</a>
+                            </li>
+<!--                            <li>-->
+<!--                                <a href="#">隐私政策</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="#">条款和条件</a>-->
+<!--                            </li>-->
+                            <li>
+                                <a th:href="@{/orderhistory}">历史订单</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/AllCourse?fenlei=0&Price=2}">促销活动</a>
+                            </li>
+<!--                            <li>-->
+<!--                                <a href="#">消息</a>-->
+<!--                            </li>-->
+                        </ul>
+<!--                        <ul class="c-links c-theme-ul">-->
+<!--                            <li>-->
+<!--                                <a href="#">博客</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="#">项目</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="#">客户</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="#">服务</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="#">特性</a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="#">声明</a>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+                    </div>
+                    <div class="col-md-5 col-sm-6 col-xs-12">
+                        <div class="c-content-title-1 c-title-md">
+                            <h3 class="c-title c-font-uppercase c-font-bold">最新消息</h3>
+                            <div class="c-line-left hide"></div>
+                        </div>
+                        <div class="c-twitter">
+                            <h4 style="color:white">无</h4>
+<!--                            <a class="twitter-timeline" href="https://twitter.com/themehats" data-theme="dark"-->
+<!--                               data-widget-id="626329365547061249" data-tweet-limit="2"-->
+<!--                               data-chrome="noheader nofooter noscrollbar noborders transparent">    </a>-->
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-12 col-xs-12">
+                        <div class="c-content-title-1 c-title-md">
+                            <h3 class="c-title c-font-uppercase c-font-bold">联系我们</h3>
+                            <div class="c-line-left hide"></div>
+                        </div>
+                        <p class="c-address c-font-16"> 山东省
+                            <br /> 中国
+                            <br /> 电话: 182 537 98217
+<!--                            <br /> 传真: 800 123 3456-->
+                            <br /> 邮箱:
+                            <a href="mailto:tian226543@163.com" target="_blank">
+                                <span class="c-theme-color">tian226543@163.com</span>
+                            </a>
+<!--                            <br /> Skype:-->
+<!--                            <a href="#">-->
+<!--                                <span class="c-theme-color">简学</span>-->
+<!--                            </a>-->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div th:fragment="register" class="modal fade c-content-login-form" id="signup-form" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content c-square">
+            <div class="modal-header c-no-border">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3 class="c-font-24 c-font-sbold">创建一个帐户</h3>
+                <p>请填写以下表格，以便与我们建立一个帐户。</p>
+                <form action="/reg" method="post">
+                    <div class="form-group">
+                        <label for="signup-telephone" class="hide">手机号</label>
+                        <input type="text" class="form-control input-lg c-square"name="telephone" id="signup-telephone"
+                               placeholder="手机号">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" class="form-control input-lg c-square" id="emailAd"  placeholder="邮箱">
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-8 col-md-2"  style="position:relative; left:-15px;top:-5px;" >
+                        <input type="text" name="emailcode" class="input-lg form-control c-square"id="emailcodeid" placeholder="请输入邮箱验证码"></div>
+                        <button type="button" onclick="sendMessage()" id="sendCode" class="btn btu-lg btn-primary">获取验证码</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signup-username" class="hide">用户名</label>
+                        <input type="text" class="form-control input-lg c-square" name="username" id="signup-username"
+                               placeholder="用户名">
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password" class="hide">密码</label>
+                        <input type="password" class="form-control input-lg c-square" name="password" id="signup-password"
+                               placeholder="密码">
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-repass" class="hide">重复密码</label>
+                        <input type="password" class="form-control input-lg c-square" name="repass" id="signup-repass"
+                               placeholder="密码">
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-sex" class="hide">性别</label>
+                        <select class="form-control input-lg c-square" name="sex" id="signup-sex">
+                            <option value="1">男</option>
+                            <option value="2">女</option>
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit"
+                                class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login">注册</button>
+                        <a href="javascript:;" class="c-btn-forgot" data-toggle="modal" data-target="#login-form"
+                           data-dismiss="modal">回到登陆</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="login" class="modal fade c-content-login-form" id="login-form" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content c-square">
+            <div class="modal-header c-no-border">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3 class="c-font-24 c-font-sbold">欢迎!</h3>
+                <p>你好</p>
+                <form action="/login1" method="post">
+                    <div class="form-group">
+                        <label for="login-telephone" class="hide">电话</label>
+                        <input type="text" class="form-control input-lg c-square" name="telephone" id="login-telephone"
+                               placeholder="测试用户：账号12345678901 密码123456">
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password" class="hide">密码</label>
+                        <input type="password" class="form-control input-lg c-square" name="password" id="login-password"
+                               placeholder="密码    后台登陆地址为  /login">
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-7 col-md-2">
+                            <input type="text" name="verifyCode" class="input-lg form-control c-square" style="vertical-align:middle ;position:relative; left:-15px;" placeholder="请输入验证码">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                                <img alt="单击图片刷新！" class="pointer" th:src="@{/common/kaptcha}"  style="vertical-align:middle;position:relative; top:3px;"
+                                     onclick="this.src='/common/kaptcha?d='+new Date()*1">
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" id="login-rememberme" class="c-check">
+                        <label for="login-rememberme" class="c-font-thin c-font-17">
+                            <span></span>
+                            <span class="check"></span>
+                            <span class="box"></span>记住我</label>
+
+                    </div>
+                    <div class="form-group">
+                        <button type="submit"
+                                class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login">登入</button>
+                        <a href="javascript:;" data-toggle="modal" data-target="#forget-password-form"
+                           data-dismiss="modal" class="c-btn-forgot">忘记密码?</a>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer c-no-border">
+                <span class="c-text-account">还没注册?</span>
+                <a href="javascript:;" data-toggle="modal" data-target="#signup-form" data-dismiss="modal"
+                   class="btn c-btn-dark-1 btn c-btn-uppercase c-btn-bold c-btn-slim c-btn-border-2x c-btn-square c-btn-signup">注册!</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div th:fragment="forget" class="modal fade c-content-login-form" id="forget-password-form" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content c-square">
+            <div class="modal-header c-no-border">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3 class="c-font-24 c-font-sbold">密码重置</h3>
+                <p>若要恢复您的密码，请填写您的手机号。</p>
+                <p>重置密码默认为123456</p>
+                <form>
+                    <div class="form-group">
+                        <label for="forget-email" class="hide">手机号</label>
+                        <input type="text" class="form-control input-lg c-square" id="forget-email"
+                               placeholder="电话">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit"
+                                class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login">重置</button>
+                        <a href="javascript:;" class="c-btn-forgot" data-toggle="modal" data-target="#login-form"
+                           data-dismiss="modal">回到登陆</a>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer c-no-border">
+                <span class="c-text-account">还没注册?</span>
+                <a href="javascript:;" data-toggle="modal" data-target="#signup-form" data-dismiss="modal"
+                   class="btn c-btn-dark-1 btn c-btn-uppercase c-btn-bold c-btn-slim c-btn-border-2x c-btn-square c-btn-signup">注册!</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<nav class="c-layout-quick-sidebar" th:fragment="style">
+    <div class="c-header">
+        <button type="button" class="c-link c-close">
+            <i class="icon-login"></i>
+        </button>
+    </div>
+    <div class="c-content">
+        <div class="c-section">
+            <h3>主题颜色</h3>
+            <div class="c-settings">
+                <span class="c-color c-default c-active" data-color="default"></span>
+                <span class="c-color c-green1" data-color="green1"></span>
+                <span class="c-color c-green2" data-color="green2"></span>
+                <span class="c-color c-green3" data-color="green3"></span>
+                <span class="c-color c-yellow1" data-color="yellow1"></span>
+                <span class="c-color c-yellow2" data-color="yellow2"></span>
+                <span class="c-color c-yellow3" data-color="yellow3"></span>
+                <span class="c-color c-red1" data-color="red1"></span>
+                <span class="c-color c-red2" data-color="red2"></span>
+                <span class="c-color c-red3" data-color="red3"></span>
+                <span class="c-color c-purple1" data-color="purple1"></span>
+                <span class="c-color c-purple2" data-color="purple2"></span>
+                <span class="c-color c-purple3" data-color="purple3"></span>
+                <span class="c-color c-blue1" data-color="blue1"></span>
+                <span class="c-color c-blue2" data-color="blue2"></span>
+                <span class="c-color c-blue3" data-color="blue3"></span>
+                <span class="c-color c-brown1" data-color="brown1"></span>
+                <span class="c-color c-brown2" data-color="brown2"></span>
+                <span class="c-color c-brown3" data-color="brown3"></span>
+                <span class="c-color c-dark1" data-color="dark1"></span>
+                <span class="c-color c-dark2" data-color="dark2"></span>
+                <span class="c-color c-dark3" data-color="dark3"></span>
+            </div>
+        </div>
+        <div class="c-section">
+            <h3>顶部菜单</h3>
+            <div class="c-settings">
+                <input type="button" class="c-setting_header-mode btn btn-sm c-btn-square c-btn-border-1x c-btn-white c-btn-sbold c-btn-uppercase active" data-value="fixed" value="默认" />
+                <input type="button" class="c-setting_header-mode btn btn-sm c-btn-square c-btn-border-1x c-btn-white c-btn-sbold c-btn-uppercase" data-value="static" value="不显示" /> </div>
+        </div>
+        <div class="c-section">
+            <h3>字体样式</h3>
+            <div class="c-settings">
+                <input type="button" class="c-setting_font-style btn btn-sm c-btn-square c-btn-border-1x c-btn-white c-btn-sbold c-btn-uppercase active" data-value="default" value="默认" />
+                <input type="button" class="c-setting_font-style btn btn-sm c-btn-square c-btn-border-1x c-btn-white c-btn-sbold c-btn-uppercase" data-value="light" value="纤细" /> </div>
+        </div>
+    </div>
+</nav>
+
+
+<head  th:fragment="css">
+    <meta charset="utf-8" />
+    <title>简学教育</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <link
+            href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700&amp;subset=all'
+            rel='stylesheet' type='text/css'>
+    <link th:href="@{/assets/plugins/socicon/socicon.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/plugins/bootstrap-social/bootstrap-social.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/plugins/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/plugins/simple-line-icons/simple-line-icons.min.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/plugins/animate/animate.min.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/plugins/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/plugins/revo-slider/css/settings.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/plugins/revo-slider/css/layers.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/plugins/revo-slider/css/navigation.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/plugins/cubeportfolio/css/cubeportfolio.min.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/plugins/owl-carousel/owl.carousel.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/plugins/owl-carousel/owl.theme.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/plugins/owl-carousel/owl.transitions.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/plugins/fancybox/jquery.fancybox.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/plugins/slider-for-bootstrap/css/slider.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/plugins/ilightbox/css/ilightbox.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/base/css/plugins.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/base/css/components.css}" id="style_components" rel="stylesheet" type="text/css" />
+    <link th:href="@{/assets/base/css/themes/default.css}" rel="stylesheet" id="style_theme" type="text/css" />
+    <link th:href="@{/assets/base/css/custom.css}" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" th:href="@{favicon.ico}" />
+</head>
+
+
+</body>
+
+
+
+</html>
